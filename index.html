@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ═══════════════════════════════════════
+     SEO PRIMARY
+═══════════════════════════════════════ -->
+<title>ProfesorIA — Herramientas IA Gratuitas para Profesores y Docentes</title>
+<meta name="description" content="14+ herramientas de inteligencia artificial 100% gratuitas para profesores. Crea planes de clase, exámenes, rúbricas y actividades en segundos. Sin registro. Sin límites. Para siempre.">
+<meta name="keywords" content="herramientas IA profesores, inteligencia artificial para docentes, crear plan de clase con IA, generador de exámenes IA, rúbricas con inteligencia artificial, IA educativa gratis, herramientas docentes gratis, ia para el aula, ProfesorIA">
+<meta name="author" content="ProfesorIA">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.iaprofesor.com/">
+
+<!-- ═══════════════════════════════════════
+     OPEN GRAPH / SOCIAL
+═══════════════════════════════════════ -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.iaprofesor.com/">
+<meta property="og:title" content="ProfesorIA — IA Gratuita para Profesores">
+<meta property="og:description" content="14+ herramientas IA para docentes. Planes de clase, exámenes, rúbricas y actividades en segundos. Gratis para siempre.">
+<meta property="og:image" content="https://www.iaprofesor.com/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="ProfesorIA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ProfesorIA — IA Gratuita para Profesores">
+<meta name="twitter:description" content="14+ herramientas IA para docentes. Sin registro, sin límites.">
+
+<!-- ═══════════════════════════════════════
+     SCHEMA.ORG STRUCTURED DATA
+═══════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.iaprofesor.com/#organization",
+      "name": "ProfesorIA",
+      "url": "https://www.iaprofesor.com",
+      "logo": { "@type": "ImageObject", "url": "https://www.iaprofesor.com/logo.png" },
+      "description": "Plataforma de herramientas de inteligencia artificial gratuitas para profesores y educadores",
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.iaprofesor.com/#website",
+      "url": "https://www.iaprofesor.com",
+      "name": "ProfesorIA",
+      "publisher": { "@id": "https://www.iaprofesor.com/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.iaprofesor.com/herramientas.html?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.iaprofesor.com/#webpage",
+      "url": "https://www.iaprofesor.com",
+      "name": "ProfesorIA — Herramientas IA Gratuitas para Profesores",
+      "description": "14+ herramientas de inteligencia artificial gratuitas para profesores",
+      "isPartOf": { "@id": "https://www.iaprofesor.com/#website" },
+      "about": { "@id": "https://www.iaprofesor.com/#organization" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "ProfesorIA",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "description": "Herramientas de inteligencia artificial para profesores y docentes",
+      "url": "https://www.iaprofesor.com",
+      "featureList": ["Generador de planes de clase", "Creador de exámenes", "Generador de rúbricas", "Chat IA educativo", "Gamificación de clases"]
+    }
+  ]
+}
+</script>
+
+<!-- ═══════════════════════════════════════
+     FONTS — Fraunces + DM Sans
+═══════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+
+<style>
+/* ═══════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════ */
+:root {
+  --ink:     #0D0F14;
+  --ink2:    #161923;
+  --ink3:    #1E2430;
+  --wall:    #232C3A;
+  --wall2:   #2A3545;
+  --mist:    #C8D4E8;
+  --mist2:   #7A8FAA;
+  --mist3:   #3D5070;
+
+  --lime:    #BBFF6B;
+  --lime-bg: rgba(187,255,107,0.06);
+  --lime-bd: rgba(187,255,107,0.18);
+  --sky:     #5BBFFF;
+  --sky-bg:  rgba(91,191,255,0.06);
+  --sky-bd:  rgba(91,191,255,0.18);
+  --coral:   #FF7A5A;
+  --coral-bg:rgba(255,122,90,0.06);
+  --gold:    #FFD166;
+  --gold-bg: rgba(255,209,102,0.06);
+  --violet:  #A78BFA;
+  --violet-bg:rgba(167,139,250,0.06);
+
+  --display: 'Fraunces', Georgia, serif;
+  --body:    'DM Sans', system-ui, sans-serif;
+  --mono:    'DM Mono', monospace;
+
+  --r4: 4px; --r8: 8px; --r12: 12px; --r16: 16px; --r24: 24px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.4), 0 4px 12px rgba(0,0,0,0.2);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--body);
+  background: var(--ink);
+  color: var(--mist);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  z-index: 0; pointer-events: none;
+  opacity: .028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px;
+}
+
+/* Ambient glow top */
+body::after {
+  content: '';
+  position: fixed; top: -200px; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 500px;
+  background: radial-gradient(ellipse, rgba(187,255,107,0.04) 0%, transparent 70%);
+  z-index: 0; pointer-events: none;
+}
+
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(13,15,20,0.92);
+  backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid var(--wall);
+  padding: 0 48px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--display);
+  font-size: 22px; font-weight: 900;
+  color: var(--mist); text-decoration: none;
+  letter-spacing: -0.5px;
+}
+.nav-logo em { color: var(--lime); font-style: italic; }
+.nav-links { display: flex; gap: 2px; list-style: none; }
+.nav-links a {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  color: var(--mist2); text-decoration: none;
+  padding: 6px 14px; border-radius: var(--r8);
+  transition: all 0.18s;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: var(--lime); background: var(--lime-bg);
+}
+.btn-nav {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  padding: 8px 18px; border-radius: var(--r8);
+  background: var(--lime); color: var(--ink);
+  text-decoration: none; border: none;
+  transition: all 0.18s; white-space: nowrap;
+}
+.btn-nav:hover { background: #d4ff8a; transform: translateY(-1px); }
+
+/* hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; border: none; background: transparent; }
+.hamburger span { width: 22px; height: 2px; background: var(--mist2); border-radius: 2px; transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(13,15,20,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--wall); z-index: 199; padding: 20px 24px; flex-direction: column; gap: 4px; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; color: var(--mist2); text-decoration: none; padding: 12px 16px; border-radius: var(--r8); transition: all 0.18s; }
+.mobile-menu a:hover { color: var(--lime); background: var(--lime-bg); }
+.mobile-menu .m-cta { background: var(--lime); color: var(--ink) !important; margin-top: 8px; text-align: center; }
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.hero-wrap {
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid var(--wall);
+}
+.hero-grid-bg {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(var(--wall) 1px, transparent 1px),
+    linear-gradient(90deg, var(--wall) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.2;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 40%, transparent 100%);
+}
+.hero {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 400px;
+  gap: 64px; align-items: center;
+  padding: 96px 48px 80px;
+  max-width: 1200px; margin: 0 auto;
+}
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 10px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--lime); background: var(--lime-bg);
+  border: 1px solid var(--lime-bd);
+  padding: 5px 14px; border-radius: 100px;
+  margin-bottom: 28px;
+}
+.hero-pill-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--lime);
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(1.5)} }
+
+.hero h1 {
+  font-family: var(--display);
+  font-size: clamp(40px, 5.5vw, 68px);
+  font-weight: 900; line-height: 0.95;
+  letter-spacing: -2px; color: var(--mist);
+  margin-bottom: 24px;
+}
+.hero h1 .hl { color: var(--lime); font-style: italic; }
+.hero h1 .hl2 { color: var(--sky); font-style: italic; }
+
+.hero-sub {
+  font-size: 17px; color: var(--mist2);
+  line-height: 1.75; max-width: 500px;
+  margin-bottom: 36px;
+}
+.hero-sub strong { color: var(--mist); font-weight: 600; }
+
+.hero-stats {
+  display: flex; gap: 28px; margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.stat {
+  display: flex; flex-direction: column;
+  border-left: 2px solid var(--wall2);
+  padding-left: 16px;
+}
+.stat-num {
+  font-family: var(--display);
+  font-size: 28px; font-weight: 700;
+  color: var(--lime); line-height: 1;
+  letter-spacing: -1px;
+}
+.stat-label { font-size: 11px; color: var(--mist3); margin-top: 3px; }
+
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  padding: 14px 28px; border-radius: var(--r8);
+  background: var(--lime); color: var(--ink);
+  text-decoration: none; transition: all 0.2s;
+}
+.btn-primary:hover { background: #d4ff8a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(187,255,107,0.2); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  padding: 14px 28px; border-radius: var(--r8);
+  background: transparent; color: var(--mist2);
+  border: 1px solid var(--wall2); text-decoration: none; transition: all 0.2s;
+}
+.btn-ghost:hover { border-color: var(--lime); color: var(--lime); }
+
+/* SIGNUP CARD */
+.signup-card {
+  background: var(--ink2);
+  border: 1px solid var(--wall2);
+  border-radius: var(--r24);
+  padding: 36px; position: relative; overflow: hidden;
+}
+.signup-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--lime), var(--sky), var(--coral));
+}
+.signup-card::after {
+  content: '';
+  position: absolute; bottom: -60px; right: -40px;
+  width: 180px; height: 180px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(187,255,107,0.06), transparent 70%);
+  pointer-events: none;
+}
+.sc-title {
+  font-family: var(--display);
+  font-size: 22px; font-weight: 700;
+  letter-spacing: -0.5px; color: var(--mist);
+  margin-bottom: 6px;
+}
+.sc-sub { font-size: 13px; color: var(--mist2); margin-bottom: 22px; line-height: 1.55; }
+.sc-items { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.sc-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; border-radius: var(--r8);
+  background: var(--ink3); border: 1px solid var(--wall);
+  text-decoration: none; color: inherit; transition: all 0.18s;
+}
+.sc-item:hover { border-color: var(--lime-bd); background: var(--lime-bg); }
+.sc-ico { font-size: 18px; flex-shrink: 0; }
+.sc-name { font-size: 13px; font-weight: 600; color: var(--mist); }
+.sc-tag { font-family: var(--mono); font-size: 9px; color: var(--lime); margin-left: auto; }
+.sc-arr { color: var(--mist3); font-size: 14px; transition: transform 0.18s; }
+.sc-item:hover .sc-arr { transform: translateX(4px); color: var(--lime); }
+.sc-note { font-size: 11px; color: var(--mist3); text-align: center; }
+
+/* ═══════════════════════════════════════
+   TOOL BELT (social proof bar)
+═══════════════════════════════════════ */
+.belt {
+  border-top: 1px solid var(--wall);
+  border-bottom: 1px solid var(--wall);
+  padding: 18px 0; overflow: hidden; position: relative;
+  background: var(--ink2);
+}
+.belt-track {
+  display: flex; gap: 0;
+  animation: scroll-belt 30s linear infinite;
+  width: max-content;
+}
+.belt:hover .belt-track { animation-play-state: paused; }
+@keyframes scroll-belt { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.belt-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 36px;
+  font-family: var(--mono); font-size: 11px; color: var(--mist3);
+  letter-spacing: 0.5px; white-space: nowrap;
+  border-right: 1px solid var(--wall);
+}
+.belt-item em { color: var(--lime); font-style: normal; font-weight: 500; }
+
+/* ═══════════════════════════════════════
+   SECTIONS SHARED
+═══════════════════════════════════════ */
+.section { padding: 80px 48px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+.eyebrow {
+  font-family: var(--mono); font-size: 10px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--lime); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 12px;
+}
+.eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--lime-bd); }
+.sec-title {
+  font-family: var(--display);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 900; letter-spacing: -1.5px; line-height: 1;
+  color: var(--mist); margin-bottom: 14px;
+}
+.sec-title em { color: var(--lime); font-style: italic; }
+.sec-desc { font-size: 16px; color: var(--mist2); max-width: 540px; line-height: 1.75; margin-bottom: 48px; }
+
+/* ═══════════════════════════════════════
+   HOW IT WORKS
+═══════════════════════════════════════ */
+.how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--wall); border: 1px solid var(--wall); border-radius: var(--r16); overflow: hidden; }
+.how-card {
+  background: var(--ink2); padding: 32px 28px;
+  transition: background 0.2s;
+}
+.how-card:hover { background: var(--ink3); }
+.how-num {
+  font-family: var(--display);
+  font-size: 52px; font-weight: 900;
+  color: var(--wall2); line-height: 1; margin-bottom: 16px;
+  letter-spacing: -2px;
+}
+.how-card:hover .how-num { color: var(--lime); }
+.how-title { font-size: 16px; font-weight: 600; color: var(--mist); margin-bottom: 8px; }
+.how-desc { font-size: 13px; color: var(--mist2); line-height: 1.7; }
+
+/* ═══════════════════════════════════════
+   TOOLS GRID
+═══════════════════════════════════════ */
+.tools-wrap { background: var(--ink2); border-top: 1px solid var(--wall); border-bottom: 1px solid var(--wall); }
+.tools-inner { max-width: 1200px; margin: 0 auto; padding: 72px 48px; }
+.tools-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 32px; }
+.tool-card {
+  position: relative; overflow: hidden;
+  background: var(--ink3); border: 1px solid var(--wall);
+  border-radius: var(--r12); padding: 20px;
+  text-decoration: none; color: inherit;
+  transition: all 0.2s; display: flex; flex-direction: column; gap: 10px;
+}
+.tool-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  opacity: 0; transition: opacity 0.2s;
+}
+.tool-card.c-lime::before { background: var(--lime); }
+.tool-card.c-sky::before { background: var(--sky); }
+.tool-card.c-coral::before { background: var(--coral); }
+.tool-card.c-gold::before { background: var(--gold); }
+.tool-card.c-violet::before { background: var(--violet); }
+.tool-card:hover { border-color: var(--wall2); transform: translateY(-3px); box-shadow: var(--shadow); }
+.tool-card:hover::before { opacity: 1; }
+.tc-ico { font-size: 26px; }
+.tc-name { font-size: 14px; font-weight: 600; color: var(--mist); }
+.tc-desc { font-size: 12px; color: var(--mist2); line-height: 1.6; }
+.tc-badge {
+  font-family: var(--mono); font-size: 9px; font-weight: 500;
+  padding: 2px 8px; border-radius: var(--r4);
+  background: var(--lime-bg); color: var(--lime);
+  border: 1px solid var(--lime-bd);
+  display: inline-block; margin-top: auto;
+}
+.tools-cta { text-align: center; }
+
+/* ═══════════════════════════════════════
+   FEATURES / WHY
+═══════════════════════════════════════ */
+.features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.feat-card {
+  padding: 28px; border-radius: var(--r12);
+  border: 1px solid var(--wall); background: var(--ink2);
+  transition: border-color 0.2s;
+}
+.feat-card:hover { border-color: var(--wall2); }
+.feat-ico { font-size: 28px; margin-bottom: 14px; }
+.feat-title { font-size: 15px; font-weight: 600; color: var(--mist); margin-bottom: 8px; }
+.feat-desc { font-size: 13px; color: var(--mist2); line-height: 1.7; }
+
+/* ═══════════════════════════════════════
+   BLOG PREVIEW
+═══════════════════════════════════════ */
+.blog-wrap { border-top: 1px solid var(--wall); background: var(--ink2); }
+.blog-inner { max-width: 1200px; margin: 0 auto; padding: 72px 48px; }
+.blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 32px; }
+.blog-card {
+  background: var(--ink3); border: 1px solid var(--wall);
+  border-radius: var(--r12); overflow: hidden;
+  text-decoration: none; color: inherit;
+  transition: all 0.2s; display: flex; flex-direction: column;
+}
+.blog-card:hover { border-color: var(--wall2); transform: translateY(-3px); box-shadow: var(--shadow); }
+.bc-top { padding: 24px 24px 0; }
+.bc-cat {
+  font-family: var(--mono); font-size: 9px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 3px 10px; border-radius: var(--r4);
+  display: inline-block; margin-bottom: 14px;
+}
+.bc-cat.lime { background: var(--lime-bg); color: var(--lime); border: 1px solid var(--lime-bd); }
+.bc-cat.sky { background: var(--sky-bg); color: var(--sky); border: 1px solid var(--sky-bd); }
+.bc-cat.coral { background: var(--coral-bg); color: var(--coral); border: 1px solid rgba(255,122,90,0.2); }
+.bc-title { font-family: var(--display); font-size: 18px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.25; color: var(--mist); margin-bottom: 12px; }
+.blog-card:hover .bc-title { color: var(--lime); }
+.bc-excerpt { font-size: 13px; color: var(--mist2); line-height: 1.7; }
+.bc-foot {
+  padding: 16px 24px; border-top: 1px solid var(--wall);
+  margin-top: auto;
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--mono); font-size: 10px; color: var(--mist3);
+}
+.bc-arr { color: var(--lime); transition: transform 0.18s; }
+.blog-card:hover .bc-arr { transform: translateX(4px); }
+
+/* ═══════════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════════ */
+.testi-section { background: var(--ink); border-top: 1px solid var(--wall); }
+.testi-inner { max-width: 1200px; margin: 0 auto; padding: 72px 48px; }
+.testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.testi-card {
+  background: var(--ink2); border: 1px solid var(--wall);
+  border-radius: var(--r12); padding: 28px;
+}
+.testi-quote {
+  font-family: var(--display);
+  font-size: 15px; font-style: italic;
+  color: var(--mist); line-height: 1.65;
+  margin-bottom: 20px;
+}
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--lime-bg), var(--sky-bg));
+  border: 1px solid var(--wall2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.testi-name { font-size: 13px; font-weight: 600; color: var(--mist); }
+.testi-role { font-size: 11px; color: var(--mist3); }
+
+/* ═══════════════════════════════════════
+   CTA BANNER
+═══════════════════════════════════════ */
+.cta-wrap {
+  position: relative; overflow: hidden;
+  border-top: 1px solid var(--wall);
+}
+.cta-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 80px 48px; text-align: center; position: relative; z-index: 1;
+}
+.cta-inner h2 {
+  font-family: var(--display);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 900; letter-spacing: -2px; line-height: 1;
+  color: var(--mist); margin-bottom: 16px;
+}
+.cta-inner h2 em { color: var(--lime); font-style: italic; }
+.cta-inner p { font-size: 16px; color: var(--mist2); margin-bottom: 36px; max-width: 500px; margin-left: auto; margin-right: auto; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.cta-bg {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 600px; height: 300px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(187,255,107,0.05), transparent 70%);
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer {
+  border-top: 1px solid var(--wall);
+  background: var(--ink2); padding: 56px 48px 36px;
+}
+.ft { max-width: 1200px; margin: 0 auto; }
+.footer-top {
+  display: grid; grid-template-columns: 280px 1fr;
+  gap: 64px; margin-bottom: 48px;
+  padding-bottom: 48px; border-bottom: 1px solid var(--wall);
+}
+.footer-logo {
+  font-family: var(--display);
+  font-size: 24px; font-weight: 900;
+  color: var(--mist); letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+.footer-logo em { color: var(--lime); font-style: italic; }
+.footer-tag { font-size: 13px; color: var(--mist2); line-height: 1.65; max-width: 220px; }
+.footer-cols { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+.fc h4 { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mist3); margin-bottom: 16px; }
+.fc ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.fc ul li a { font-size: 13px; color: var(--mist2); text-decoration: none; transition: color 0.15s; }
+.fc ul li a:hover { color: var(--lime); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+  font-family: var(--mono); font-size: 10px; color: var(--mist3);
+  letter-spacing: 0.5px;
+}
+
+/* ═══════════════════════════════════════
+   EXIT POPUP
+═══════════════════════════════════════ */
+.popup-wrap {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(13,15,20,0.85); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s;
+}
+.popup-wrap.show { opacity: 1; pointer-events: auto; }
+.popup-box {
+  background: var(--ink2); border: 1px solid var(--wall2);
+  border-radius: var(--r24); padding: 44px;
+  max-width: 440px; width: 90%; position: relative; text-align: center;
+}
+.popup-box::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg, var(--lime), var(--sky)); border-radius: var(--r24) var(--r24) 0 0; }
+.popup-x { position:absolute; top:16px; right:16px; background:none; border:none; color:var(--mist3); font-size:16px; cursor:pointer; padding:4px 8px; border-radius: var(--r4); transition: color 0.15s; }
+.popup-x:hover { color: var(--mist); }
+.popup-em { font-size: 44px; margin-bottom: 16px; }
+.popup-title { font-family: var(--display); font-size: 26px; font-weight: 700; letter-spacing: -0.5px; color: var(--mist); margin-bottom: 8px; }
+.popup-sub { font-size: 14px; color: var(--mist2); margin-bottom: 24px; line-height: 1.6; }
+.popup-inp { width: 100%; padding: 12px 16px; background: var(--ink3); border: 1px solid var(--wall2); border-radius: var(--r8); color: var(--mist); font-family: var(--body); font-size: 14px; outline: none; margin-bottom: 10px; transition: border-color 0.2s; }
+.popup-inp:focus { border-color: var(--lime-bd); }
+.popup-btn { width: 100%; padding: 14px; background: var(--lime); color: var(--ink); font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; border: none; border-radius: var(--r8); cursor: pointer; transition: all 0.18s; }
+.popup-btn:hover { background: #d4ff8a; }
+.popup-foot { font-size: 11px; color: var(--mist3); margin-top: 12px; }
+
+/* ═══════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════ */
+.fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════════════════════════
+   COUNTER ANIMATION
+═══════════════════════════════════════ */
+.count-num { transition: all 0.2s; }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; gap: 48px; padding: 72px 48px 64px; }
+  .tools-grid { grid-template-columns: repeat(2,1fr); }
+  .features-grid { grid-template-columns: repeat(2,1fr); }
+  .blog-grid { grid-template-columns: repeat(2,1fr); }
+  .testi-grid { grid-template-columns: repeat(2,1fr); }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .btn-nav { display: none; }
+  .hero { padding: 56px 20px 48px; }
+  .hero h1 { letter-spacing: -1.5px; }
+  .section { padding: 56px 20px; }
+  .tools-inner, .blog-inner, .testi-inner { padding: 56px 20px; }
+  .cta-inner { padding: 56px 20px; }
+  .tools-grid { grid-template-columns: repeat(2,1fr); gap: 10px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .how-grid { grid-template-columns: 1fr; background: transparent; border: 1px solid var(--wall); border-radius: var(--r12); }
+  .how-card { border-bottom: 1px solid var(--wall); border-radius: 0; }
+  .how-card:last-child { border-bottom: none; }
+  .footer-cols { grid-template-columns: repeat(2,1fr); }
+  footer { padding: 40px 20px 28px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .tools-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 20px; }
+  .cta-btns { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <a class="nav-logo" href="index.html">Profesor<em>IA</em></a>
+  <ul class="nav-links" role="navigation" aria-label="Menú principal">
+    <li><a href="herramientas.html">Herramientas</a></li>
+    <li><a href="chatbot.html">Chat IA ✦</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="partners_profesoria.html">Partners</a></li>
+  </ul>
+  <a href="suscripcion.html" class="btn-nav">500 prompts gratis →</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu" role="navigation">
+  <a href="herramientas.html">Herramientas</a>
+  <a href="chatbot.html">Chat IA ✦</a>
+  <a href="blog.html">Blog</a>
+  <a href="partners_profesoria.html">Partners</a>
+  <a href="suscripcion.html" class="m-cta">500 prompts gratis →</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero-wrap">
+  <div class="hero-grid-bg"></div>
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-pill">
+        <span class="hero-pill-dot"></span>
+        Gratis para siempre · Sin registro
+      </div>
+      <h1>
+        La <em>IA</em><br>
+        que los<br>
+        <em>docentes</em><br>
+        merecían
+      </h1>
+      <p class="hero-sub">
+        <strong>14+ herramientas de IA</strong> diseñadas desde el aula para el aula.
+        Planes de clase, exámenes, rúbricas, actividades y mucho más.
+        Sin suscripción. Sin límites.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num count-num" data-target="14">14</span>
+          <span class="stat-label">Herramientas gratuitas</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num count-num" data-target="0">0€</span>
+          <span class="stat-label">Para siempre</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num count-num" data-target="2">2 min</span>
+          <span class="stat-label">Por lección</span>
+        </div>
+      </div>
+      <div class="hero-btns">
+        <a href="herramientas.html" class="btn-primary">Ver todas las herramientas →</a>
+        <a href="chatbot.html" class="btn-ghost">Hablar con la IA ✦</a>
+      </div>
+    </div>
+
+    <div class="signup-card fade-up">
+      <div class="sc-title">Empieza ahora gratis</div>
+      <p class="sc-sub">Elige tu primera herramienta. Sin registro, sin email, sin nada.</p>
+      <div class="sc-items">
+        <a href="herramientas.html#plan-clase" class="sc-item">
+          <span class="sc-ico">📋</span>
+          <div>
+            <div class="sc-name">Plan de Clase IA</div>
+          </div>
+          <span class="sc-tag">Más usada</span>
+          <span class="sc-arr">→</span>
+        </a>
+        <a href="herramientas.html#examenes" class="sc-item">
+          <span class="sc-ico">✅</span>
+          <div><div class="sc-name">Generador de Exámenes</div></div>
+          <span class="sc-arr">→</span>
+        </a>
+        <a href="herramientas.html#rubricas" class="sc-item">
+          <span class="sc-ico">📊</span>
+          <div><div class="sc-name">Rúbricas de Evaluación</div></div>
+          <span class="sc-arr">→</span>
+        </a>
+        <a href="herramientas.html#gamificacion" class="sc-item">
+          <span class="sc-ico">🎮</span>
+          <div><div class="sc-name">Gamificación de Clases</div></div>
+          <span class="sc-tag">Popular</span>
+          <span class="sc-arr">→</span>
+        </a>
+      </div>
+      <p class="sc-note">O consigue <a href="suscripcion.html" style="color:var(--lime);text-decoration:none">500 prompts gratis →</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SCROLLING BELT ═══ -->
+<div class="belt" aria-hidden="true">
+  <div class="belt-track">
+    <div class="belt-item">📋 Planes de clase <em>en 2 minutos</em></div>
+    <div class="belt-item">✅ Exámenes <em>personalizados</em></div>
+    <div class="belt-item">📊 Rúbricas <em>profesionales</em></div>
+    <div class="belt-item">🎮 Gamificación <em>del aula</em></div>
+    <div class="belt-item">💬 Feedback <em>para alumnos</em></div>
+    <div class="belt-item">📖 Textos <em>adaptados al nivel</em></div>
+    <div class="belt-item">🎯 Objetivos <em>SMART</em></div>
+    <div class="belt-item">🧠 Chat IA <em>educativo</em></div>
+    <div class="belt-item">📋 Planes de clase <em>en 2 minutos</em></div>
+    <div class="belt-item">✅ Exámenes <em>personalizados</em></div>
+    <div class="belt-item">📊 Rúbricas <em>profesionales</em></div>
+    <div class="belt-item">🎮 Gamificación <em>del aula</em></div>
+    <div class="belt-item">💬 Feedback <em>para alumnos</em></div>
+    <div class="belt-item">📖 Textos <em>adaptados al nivel</em></div>
+    <div class="belt-item">🎯 Objetivos <em>SMART</em></div>
+    <div class="belt-item">🧠 Chat IA <em>educativo</em></div>
+  </div>
+</div>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<div class="section">
+  <div class="eyebrow">Cómo funciona</div>
+  <h2 class="sec-title">De cero a <em>lección lista</em><br>en 3 pasos</h2>
+  <p class="sec-desc">Sin curvas de aprendizaje, sin configuración. Abres, escribes, copias. Así de simple.</p>
+  <div class="how-grid">
+    <div class="how-card fade-up">
+      <div class="how-num">01</div>
+      <div class="how-title">Elige la herramienta</div>
+      <div class="how-desc">14 herramientas organizadas por necesidad: planificar, evaluar, motivar, comunicar. Cada una resuelve una tarea concreta del trabajo docente.</div>
+    </div>
+    <div class="how-card fade-up">
+      <div class="how-num">02</div>
+      <div class="how-title">Introduce tu contexto</div>
+      <div class="how-desc">Materia, nivel y tema. La IA entiende el contexto educativo y genera resultados específicos, no genéricos. Nada de "rellena este texto con tu información".</div>
+    </div>
+    <div class="how-card fade-up">
+      <div class="how-num">03</div>
+      <div class="how-title">Copia y lleva al aula</div>
+      <div class="how-desc">Un clic copia el resultado. Pégalo en tu documento, imprime o adapta. Lo que habría tardado 45 minutos, en menos de 2.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TOOLS ═══ -->
+<div class="tools-wrap">
+  <div class="tools-inner">
+    <div class="eyebrow">Herramientas</div>
+    <h2 class="sec-title" style="margin-bottom:14px">Todo lo que necesitas,<br><em>gratis</em> y listo para usar</h2>
+    <p class="sec-desc">Cada herramienta usa Claude (Anthropic), la IA más avanzada del mercado, especializada en el contexto educativo español y latinoamericano.</p>
+    <div class="tools-grid">
+      <a href="herramientas.html#plan-clase" class="tool-card c-lime fade-up">
+        <div class="tc-ico">📋</div>
+        <div class="tc-name">Plan de Clase</div>
+        <div class="tc-desc">Objetivos, desarrollo, materiales y evaluación en 2 minutos.</div>
+        <span class="tc-badge">Más usada</span>
+      </a>
+      <a href="herramientas.html#examenes" class="tool-card c-sky fade-up">
+        <div class="tc-ico">✅</div>
+        <div class="tc-name">Generador de Exámenes</div>
+        <div class="tc-desc">Test, desarrollo o mixto. Con soluciones incluidas.</div>
+        <span class="tc-badge">IA Real</span>
+      </a>
+      <a href="herramientas.html#rubricas" class="tool-card c-coral fade-up">
+        <div class="tc-ico">📊</div>
+        <div class="tc-name">Rúbricas de Evaluación</div>
+        <div class="tc-desc">4 criterios, 4 niveles, lista para imprimir al instante.</div>
+        <span class="tc-badge">IA Real</span>
+      </a>
+      <a href="herramientas.html#unidad-didactica" class="tool-card c-gold fade-up">
+        <div class="tc-ico">📚</div>
+        <div class="tc-name">Unidad Didáctica</div>
+        <div class="tc-desc">Programación completa con competencias y temporalización.</div>
+        <span class="tc-badge">IA Real</span>
+      </a>
+      <a href="herramientas.html#feedback" class="tool-card c-violet fade-up">
+        <div class="tc-ico">💬</div>
+        <div class="tc-name">Feedback Personalizado</div>
+        <div class="tc-desc">Comentarios motivadores y específicos para cada alumno.</div>
+        <span class="tc-badge">IA Real</span>
+      </a>
+      <a href="herramientas.html#gamificacion" class="tool-card c-lime fade-up">
+        <div class="tc-ico">🎮</div>
+        <div class="tc-name">Gamificación</div>
+        <div class="tc-desc">Convierte cualquier contenido en una dinámica de juego.</div>
+        <span class="tc-badge">Popular</span>
+      </a>
+      <a href="herramientas.html#simplificador" class="tool-card c-sky fade-up">
+        <div class="tc-ico">📖</div>
+        <div class="tc-name">Simplificador de Textos</div>
+        <div class="tc-desc">Adapta cualquier texto al nivel de tus alumnos.</div>
+        <span class="tc-badge">IA Real</span>
+      </a>
+      <a href="herramientas.html" class="tool-card c-coral fade-up" style="align-items:center;justify-content:center;text-align:center;border-style:dashed">
+        <div style="font-size:32px;margin-bottom:8px">+6</div>
+        <div class="tc-name">Más herramientas</div>
+        <div class="tc-desc" style="text-align:center">Ver las 14 herramientas gratuitas</div>
+      </a>
+    </div>
+    <div class="tools-cta">
+      <a href="herramientas.html" class="btn-primary">Ver todas las herramientas gratis →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ WHY ═══ -->
+<div class="section">
+  <div class="eyebrow">Por qué ProfesorIA</div>
+  <h2 class="sec-title">La diferencia entre<br><em>ChatGPT</em> y una herramienta<br>para <em>docentes</em></h2>
+  <p class="sec-desc">ChatGPT es un asistente general. ProfesorIA está construida con el trabajo docente como único objetivo.</p>
+  <div class="features-grid">
+    <div class="feat-card fade-up">
+      <div class="feat-ico">🎯</div>
+      <div class="feat-title">Contexto educativo real</div>
+      <div class="feat-desc">Los prompts entienden taxonomía de Bloom, LOMLOE, competencias clave y criterios de evaluación. No tienes que explicarle qué es una rúbrica.</div>
+    </div>
+    <div class="feat-card fade-up">
+      <div class="feat-ico">⚡</div>
+      <div class="feat-title">Resultados en 30 segundos</div>
+      <div class="feat-desc">Sin prompt engineering, sin iteraciones. Introduces tu materia y tema, y la herramienta genera algo usable directamente en el aula.</div>
+    </div>
+    <div class="feat-card fade-up">
+      <div class="feat-ico">🔓</div>
+      <div class="feat-title">Gratis. Para siempre.</div>
+      <div class="feat-desc">Sin freemium, sin límite de usos, sin tarjeta de crédito. Creemos que los docentes no deberían pagar para hacer mejor su trabajo.</div>
+    </div>
+    <div class="feat-card fade-up">
+      <div class="feat-ico">🌍</div>
+      <div class="feat-title">España y LATAM</div>
+      <div class="feat-desc">Diseñado para el sistema educativo español e hispanohablante. Conoce el currículo, los niveles y el vocabulario del aula en español.</div>
+    </div>
+    <div class="feat-card fade-up">
+      <div class="feat-ico">🧠</div>
+      <div class="feat-title">IA de última generación</div>
+      <div class="feat-desc">Usa Claude de Anthropic, reconocida como una de las IAs más avanzadas para tareas educativas y de escritura de calidad.</div>
+    </div>
+    <div class="feat-card fade-up">
+      <div class="feat-ico">🏛️</div>
+      <div class="feat-title">Tu comunidad docente</div>
+      <div class="feat-desc">Newsletter semanal con prompts probados en aulas reales, estrategias y noticias de IA educativa. Sin teoría. Solo práctica.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BLOG PREVIEW ═══ -->
+<div class="blog-wrap">
+  <div class="blog-inner">
+    <div class="eyebrow">Blog</div>
+    <h2 class="sec-title" style="margin-bottom:14px">Guías que se <em>llevan</em><br>al aula el <em>lunes</em></h2>
+    <p class="sec-desc">Sin paywall, sin registro. Artículos escritos por y para docentes que ya usan IA en el aula.</p>
+    <div class="blog-grid">
+      <a href="blog.html#plan30" class="blog-card fade-up">
+        <div class="bc-top">
+          <span class="bc-cat lime">Planificación</span>
+          <h3 class="bc-title">Cómo crear 30 lecciones en 10 minutos con IA</h3>
+          <p class="bc-excerpt">El prompt maestro que usan cientos de docentes para preparar semanas enteras de clases en una tarde.</p>
+        </div>
+        <div class="bc-foot"><span>8 min · Ene 2026</span><span class="bc-arr">→</span></div>
+      </a>
+      <a href="blog.html#rubricas" class="blog-card fade-up">
+        <div class="bc-top">
+          <span class="bc-cat sky">Evaluación</span>
+          <h3 class="bc-title">Rúbricas con IA: el método de los mejores docentes</h3>
+          <p class="bc-excerpt">Una rúbrica bien diseñada reduce reclamaciones de notas y da al alumno una guía clara. La IA las genera en 60 segundos.</p>
+        </div>
+        <div class="bc-foot"><span>7 min · Ene 2026</span><span class="bc-arr">→</span></div>
+      </a>
+      <a href="blog.html" class="blog-card fade-up">
+        <div class="bc-top">
+          <span class="bc-cat coral">Motivación</span>
+          <h3 class="bc-title">Gamificación con IA: cómo hacer que la clase más aburrida sea la más esperada</h3>
+          <p class="bc-excerpt">5 dinámicas generadas con IA que cualquier profesor puede implementar mañana, sin materiales especiales.</p>
+        </div>
+        <div class="bc-foot"><span>6 min · Ene 2026</span><span class="bc-arr">→</span></div>
+      </a>
+    </div>
+    <div class="tools-cta">
+      <a href="blog.html" class="btn-ghost">Ver todos los artículos →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<div class="testi-section">
+  <div class="testi-inner">
+    <div class="eyebrow">Docentes que ya lo usan</div>
+    <h2 class="sec-title" style="margin-bottom:48px">Lo que dicen<br>los <em>profesores</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <p class="testi-quote">"Antes tardaba 45 minutos en hacer un plan de clase decente. Ahora en 3 minutos tengo algo mejor. Es la herramienta que nadie me enseñó en la carrera."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">👩‍🏫</div>
+          <div>
+            <div class="testi-name">María G.</div>
+            <div class="testi-role">Profesora de Lengua · 3º ESO · Madrid</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <p class="testi-quote">"Lo que más me sorprendió es que no es genérico. Le pongo mi materia, mi nivel y el tema, y el resultado es directamente usable. Sin editar nada."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">👨‍🏫</div>
+          <div>
+            <div class="testi-name">Carlos M.</div>
+            <div class="testi-role">Profesor de Matemáticas · Bachillerato · México</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <p class="testi-quote">"La rúbrica que generé para el proyecto de Ciencias la tuve que modificar un 10%. El resto era exactamente lo que necesitaba. Increíble para ser gratis."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">👩‍🏫</div>
+          <div>
+            <div class="testi-name">Ana P.</div>
+            <div class="testi-role">Maestra de Ciencias · 6º Primaria · Buenos Aires</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CTA ═══ -->
+<div class="cta-wrap">
+  <div class="cta-bg"></div>
+  <div class="cta-inner">
+    <h2>¿Listo para <em>ahorrar</em><br>10 horas semanales?</h2>
+    <p>Únete a la newsletter y recibe gratis el pack de 500 prompts IA para profesores. Probados en aulas reales.</p>
+    <div class="cta-btns">
+      <a href="suscripcion.html" class="btn-primary">Conseguir 500 prompts gratis →</a>
+      <a href="herramientas.html" class="btn-ghost">Ver las herramientas →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="ft">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Profesor<em>IA</em></div>
+        <p class="footer-tag">Herramientas de inteligencia artificial gratuitas para profesores y educadores que quieren enseñar mejor en menos tiempo.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="fc">
+          <h4>Herramientas</h4>
+          <ul>
+            <li><a href="herramientas.html#plan-clase">Plan de Clase</a></li>
+            <li><a href="herramientas.html#examenes">Exámenes y Quizzes</a></li>
+            <li><a href="herramientas.html#rubricas">Rúbricas</a></li>
+            <li><a href="herramientas.html#feedback">Feedback Alumnos</a></li>
+            <li><a href="herramientas.html#gamificacion">Gamificación</a></li>
+            <li><a href="herramientas.html">Ver todas →</a></li>
+          </ul>
+        </div>
+        <div class="fc">
+          <h4>Contenido</h4>
+          <ul>
+            <li><a href="blog.html">Blog IA Educativa</a></li>
+            <li><a href="chatbot.html">Chat IA Docente</a></li>
+            <li><a href="partners_profesoria.html">Partners</a></li>
+          </ul>
+        </div>
+        <div class="fc">
+          <h4>Comunidad</h4>
+          <ul>
+            <li><a href="suscripcion.html">500 Prompts Gratis</a></li>
+            <li><a href="suscripcion.html">Newsletter semanal</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ProfesorIA (iaprofesor.com) · Todos los derechos reservados</span>
+      <span>Hecho con 🤖 IA · Para los que enseñan</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ EXIT POPUP ═══ -->
+<div class="popup-wrap" id="exitPopup" role="dialog" aria-modal="true" aria-label="Oferta especial">
+  <div class="popup-box">
+    <button class="popup-x" onclick="closePopup()" aria-label="Cerrar">✕</button>
+    <div class="popup-em">🎁</div>
+    <div class="popup-title">Antes de irte...</div>
+    <p class="popup-sub">Consigue gratis el pack de <strong>500 prompts IA para profesores</strong>. Listo para usar mañana en el aula.</p>
+    <input class="popup-inp" type="email" placeholder="tu@email.com" id="popupEmail">
+    <button class="popup-btn" onclick="window.location.href='suscripcion.html'">Conseguir los 500 prompts →</button>
+    <p class="popup-foot">Sin spam · Baja cuando quieras · Gratis siempre</p>
+  </div>
+</div>
+
+<script>
+/* ═══ MENU ═══ */
+function toggleMenu() {
+  const h = document.getElementById('hamburger'), m = document.getElementById('mobileMenu');
+  h.classList.toggle('open'); m.classList.toggle('open');
+  h.setAttribute('aria-expanded', h.classList.contains('open'));
+}
+
+/* ═══ INTERSECTION OBSERVER — FADE UP ═══ */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 70);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.06 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+/* ═══ EXIT INTENT POPUP ═══ */
+let popupShown = false;
+document.addEventListener('mouseleave', e => {
+  if (e.clientY <= 0 && !popupShown && !sessionStorage.getItem('popup-dismissed')) {
+    document.getElementById('exitPopup').classList.add('show');
+    popupShown = true;
+  }
+});
+function closePopup() {
+  document.getElementById('exitPopup').classList.remove('show');
+  sessionStorage.setItem('popup-dismissed', '1');
+}
+document.getElementById('exitPopup').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closePopup();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
+/* ═══ COUNTER ANIMATION ═══ */
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      if (!isNaN(target)) {
+        let start = 0;
+        const step = () => {
+          start += Math.ceil(target / 40);
+          if (start >= target) { el.textContent = el.dataset.suffix || target; }
+          else { el.textContent = start + (el.dataset.suffix || ''); requestAnimationFrame(step); }
+        };
+        step();
+      }
+      counterObs.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.count-num[data-target]').forEach(el => counterObs.observe(el));
+</script>
+</body>
+</html>

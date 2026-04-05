@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chat IA para Docentes — ProfesorIA</title>
+<meta name="description" content="Asistente IA gratuito especializado en educación. Planes de clase, metodología, evaluación y recursos. Sin registro ni límites.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preload" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+<style>
+:root{--bg:#06090F;--bg2:#0C1018;--bg3:#121820;--border:#1C2A3A;--border2:#263A52;--text:#E2EAF8;--text2:#7A8BAA;--text3:#3D5068;--cyan:#00C8FF;--cyan-bg:rgba(0,200,255,0.06);--green:#00E87A;--green-bg:rgba(0,232,122,0.06);--amber:#FFB800;--amber-bg:rgba(255,184,0,0.06);--purple:#9B5CFF;--purple-bg:rgba(155,92,255,0.06);--red:#FF4466;--glow:0 0 30px rgba(0,200,255,0.2)}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:998;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.02) 2px,rgba(0,0,0,0.02) 4px)}
+nav{position:sticky;top:0;z-index:200;background:rgba(0,0,0,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Space Mono',monospace;font-size:16px;font-weight:700;text-decoration:none;letter-spacing:1px}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text2);text-decoration:none;padding:7px 14px;border-radius:6px;transition:all 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan);background:var(--cyan-bg)}
+.btn-nav{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:8px 18px;border-radius:6px;text-decoration:none;background:var(--cyan-bg);color:var(--cyan);border:1px solid rgba(0,200,255,0.3);transition:all 0.2s}
+.btn-nav:hover{background:var(--cyan);color:var(--bg)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:transparent}
+.hamburger span{width:22px;height:2px;background:var(--text2);border-radius:2px;transition:all 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(0,0,0,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:199;padding:20px 24px;flex-direction:column;gap:4px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text2);text-decoration:none;padding:12px 16px;border-radius:8px;transition:all 0.2s}
+.mobile-menu a:hover,.mobile-menu .m-cta{color:var(--cyan);background:var(--cyan-bg)}
+.mobile-menu .m-cta{background:var(--cyan);color:var(--bg)!important;margin-top:8px;text-align:center}
+.fade-in{opacity:0;transform:translateY(14px);transition:opacity 0.55s ease,transform 0.55s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+footer{border-top:1px solid var(--border);padding:40px 48px;background:var(--bg2)}
+.ft{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.fl{font-family:'Space Mono',monospace;font-size:14px;font-weight:700;color:var(--cyan);text-decoration:none;letter-spacing:1px}
+.flinks{display:flex;gap:16px;flex-wrap:wrap}
+.flinks a{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);text-decoration:none;transition:color 0.15s}
+.flinks a:hover{color:var(--cyan)}
+.fc-copy{font-family:'Space Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:1px}
+@media(max-width:768px){nav,.page-hero,.main-wrap{padding-left:20px;padding-right:20px}.nav-links{display:none}.hamburger{display:flex}footer{padding:28px 20px}.ft{flex-direction:column;text-align:center}}
+
+html,body{height:100%;overflow:hidden}
+nav{flex-shrink:0}
+.app{display:flex;height:calc(100vh - 64px);position:relative;z-index:1}
+.sidebar{width:260px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+.sb-head{padding:20px 16px 12px;border-bottom:1px solid var(--border)}
+.sb-title{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:12px}
+.new-chat{width:100%;padding:10px 14px;background:var(--cyan-bg);border:1px solid rgba(0,200,255,0.25);border-radius:8px;color:var(--cyan);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:8px}
+.new-chat:hover{background:var(--cyan);color:var(--bg)}
+.prompts-section{flex:1;overflow-y:auto;padding:16px}
+.prompts-section::-webkit-scrollbar{width:4px}
+.prompts-section::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+.pg-title{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:8px;margin-top:16px}
+.pg-title:first-child{margin-top:0}
+.qp{width:100%;text-align:left;padding:8px 10px;border-radius:7px;border:1px solid transparent;background:transparent;color:var(--text2);font-family:'Space Grotesk',sans-serif;font-size:12px;cursor:pointer;transition:all 0.15s;line-height:1.4;display:flex;align-items:flex-start;gap:8px}
+.qp:hover{background:var(--bg3);border-color:var(--border);color:var(--text)}
+.qp-ico{font-size:14px;flex-shrink:0;margin-top:1px}
+.sb-foot{padding:12px 16px;border-top:1px solid var(--border)}
+.nl-mini{display:flex;align-items:center;gap:10px;padding:10px 12px;background:linear-gradient(135deg,var(--cyan-bg),var(--green-bg));border:1px solid var(--border2);border-radius:8px;text-decoration:none;transition:all 0.2s}
+.nl-mini:hover{border-color:rgba(0,200,255,0.3)}
+.nm-ico{font-size:18px}
+.nm-name{font-size:12px;font-weight:600;color:var(--text)}
+.nm-sub{font-size:10px;color:var(--text3)}
+.nm-arr{font-size:12px;color:var(--cyan);margin-left:auto}
+.chat-area{flex:1;display:flex;flex-direction:column;min-width:0}
+.messages{flex:1;overflow-y:auto;padding:24px;display:flex;flex-direction:column;gap:20px}
+.messages::-webkit-scrollbar{width:4px}
+.messages::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+.welcome{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;padding:40px 20px}
+.w-icon{font-size:48px;margin-bottom:20px}
+.w-title{font-size:26px;font-weight:700;letter-spacing:-0.5px;color:var(--text);margin-bottom:10px}
+.w-title span{color:var(--cyan)}
+.w-desc{font-size:15px;color:var(--text2);max-width:460px;line-height:1.7;margin-bottom:32px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:580px}
+.chip{padding:8px 14px;background:var(--bg3);border:1px solid var(--border2);border-radius:100px;font-size:12px;color:var(--text2);cursor:pointer;transition:all 0.2s;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.5px}
+.chip:hover{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-bg)}
+.ctx-bar{padding:10px 20px;border-bottom:1px solid var(--border);display:flex;gap:6px;flex-wrap:wrap;background:var(--bg2)}
+.ctx-chip{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:100px;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text3);transition:all 0.15s}
+.ctx-chip:hover,.ctx-chip.active{background:var(--cyan-bg);color:var(--cyan);border-color:rgba(0,200,255,0.3)}
+.msg{display:flex;gap:12px;max-width:800px}
+.msg.user{flex-direction:row-reverse;align-self:flex-end}
+.msg-av{width:32px;height:32px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px}
+.msg.assistant .msg-av{background:linear-gradient(135deg,var(--cyan-bg),var(--green-bg));border:1px solid rgba(0,200,255,0.2)}
+.msg.user .msg-av{background:var(--bg3);border:1px solid var(--border)}
+.msg-content{}
+.msg-name{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:5px}
+.msg.user .msg-name{text-align:right}
+.msg-bubble{padding:14px 18px;border-radius:10px;font-size:14px;line-height:1.7;max-width:640px}
+.msg.assistant .msg-bubble{background:var(--bg2);border:1px solid var(--border);color:var(--text);border-radius:2px 10px 10px 10px}
+.msg.user .msg-bubble{background:var(--cyan);color:var(--bg);border-radius:10px 2px 10px 10px}
+.msg-actions{display:flex;gap:6px;margin-top:6px}
+.act-btn{font-family:'Space Mono',monospace;font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:4px;border:1px solid var(--border);background:transparent;color:var(--text3);cursor:pointer;transition:all 0.15s}
+.act-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.typing{display:flex;gap:4px;padding:14px 18px;background:var(--bg2);border:1px solid var(--border);border-radius:2px 10px 10px 10px;width:fit-content}
+.typing span{width:6px;height:6px;border-radius:50%;background:var(--text3);animation:typing 1.2s infinite}
+.typing span:nth-child(2){animation-delay:0.2s}
+.typing span:nth-child(3){animation-delay:0.4s}
+@keyframes typing{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+.err-bubble{padding:12px 16px;background:rgba(255,68,102,0.08);border:1px solid rgba(255,68,102,0.25);border-radius:8px;font-size:13px;color:var(--red,#ff4466);max-width:500px}
+.input-area{padding:16px 20px;border-top:1px solid var(--border);background:var(--bg2)}
+.input-row{display:flex;gap:10px;align-items:flex-end;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:10px 14px;transition:border-color 0.2s}
+.input-row:focus-within{border-color:rgba(0,200,255,0.4)}
+textarea#user-input{flex:1;background:transparent;border:none;outline:none;resize:none;color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.5;max-height:160px}
+#send-btn{width:36px;height:36px;border-radius:8px;background:var(--cyan);color:var(--bg);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.2s;flex-shrink:0}
+#send-btn:hover{background:#0099cc}
+#send-btn:disabled{opacity:0.45;cursor:not-allowed}
+.input-meta{display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:11px;color:var(--text3)}
+.input-meta a{color:var(--cyan);text-decoration:none}
+@media(max-width:768px){.sidebar{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html" style="color:#00C8FF">ProfesorIA<span style="color:#00E87A">.io</span></a>
+  <ul class="nav-links"><li><a href="herramientas.html">Herramientas</a></li><li><a href="chatbot.html" class="active">Chat IA ✦</a></li><li><a href="blog.html">Blog</a></li><li><a href="partners_profesoria.html">Partners</a></li><li><a href="#newsletter">Newsletter</a></li></ul>
+  <a href="suscripcion.html" class="btn-nav">500 prompts gratis →</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="herramientas.html">Herramientas</a>
+  <a href="chatbot.html">Chat IA</a>
+  <a href="blog.html">Blog</a>
+  <a href="partners_profesoria.html">Partners</a>
+  <a href="suscripcion.html" class="m-cta">500 prompts gratis →</a>
+</div>
+<div class="app">
+  <div class="sidebar">
+    <div class="sb-head">
+      <div class="sb-title">Asistente Docente</div>
+      <button class="new-chat" onclick="newChat()">＋ Nueva conversación</button>
+    </div>
+    <div class="prompts-section">
+      <div class="pg-title">Planificación</div>
+      <button class="qp" data-prompt="Crea un plan de clase de 50 minutos para Matemáticas de 3º ESO sobre ecuaciones de segundo grado con actividades inclusivas"><span class="qp-ico">📋</span>Plan de clase completo</button>
+      <button class="qp" data-prompt="Dame 5 estrategias de aprendizaje cooperativo para trabajar un tema de Ciencias Naturales en Primaria"><span class="qp-ico">👥</span>Aprendizaje cooperativo</button>
+      <div class="pg-title">Evaluación</div>
+      <button class="qp" data-prompt="Crea una rúbrica de evaluación para un trabajo escrito de Historia de 4º ESO sobre la Primera Guerra Mundial"><span class="qp-ico">📊</span>Rúbrica de evaluación</button>
+      <button class="qp" data-prompt="¿Cómo puedo evaluar las competencias en lugar de solo los contenidos en Secundaria?"><span class="qp-ico">✅</span>Evaluación por competencias</button>
+      <div class="pg-title">Metodología</div>
+      <button class="qp" data-prompt="Explícame cómo aplicar el método ABP (Aprendizaje Basado en Proyectos) en Lengua con alumnos de 2º Bachillerato"><span class="qp-ico">🔬</span>ABP paso a paso</button>
+      <button class="qp" data-prompt="Dame ideas para gamificar una clase sobre la célula para alumnos de 3º ESO de Biología"><span class="qp-ico">🎮</span>Gamificación en el aula</button>
+      <div class="pg-title">Inclusión</div>
+      <button class="qp" data-prompt="¿Cómo adapto una explicación sobre fracciones para alumnos con dislexia en 4º de Primaria?"><span class="qp-ico">♿</span>Adaptaciones curriculares</button>
+    </div>
+    <div class="sb-foot">
+      <a href="suscripcion.html" class="nl-mini">
+        <span class="nm-ico">📚</span>
+        <div><div class="nm-name">500 Prompts Gratis</div><div class="nm-sub">PDF para docentes</div></div>
+        <span class="nm-arr">→</span>
+      </a>
+    </div>
+  </div>
+  <div class="chat-area">
+    <div class="ctx-bar">
+      <button class="ctx-chip active" data-ctx="docente" onclick="toggleCtx(this)">🏫 Docente general</button>
+      <button class="ctx-chip" data-ctx="primaria" onclick="toggleCtx(this)">🎒 Primaria</button>
+      <button class="ctx-chip" data-ctx="secundaria" onclick="toggleCtx(this)">📚 Secundaria/Bach</button>
+      <button class="ctx-chip" data-ctx="evaluacion" onclick="toggleCtx(this)">📊 Evaluación</button>
+      <button class="ctx-chip" data-ctx="inclusion" onclick="toggleCtx(this)">♿ Inclusión</button>
+    </div>
+    <div class="messages" id="messages">
+      <div class="welcome" id="welcome-screen">
+        <div class="w-icon">🏛️</div>
+        <h2 class="w-title">ProfesorIA <span>AI</span></h2>
+        <p class="w-desc">Tu asistente IA especializado en educación. Planes de clase, evaluación, metodología y recursos para el aula real.</p>
+        <div class="chips" id="chips-container">
+          <div class="chip" data-prompt="Crea un plan de clase de Matemáticas para 3º ESO sobre ecuaciones">📋 Plan de clase ESO</div>
+          <div class="chip" data-prompt="Diseña una rúbrica para evaluar un trabajo escrito de Primaria">📊 Rúbrica Primaria</div>
+          <div class="chip" data-prompt="Dame 5 actividades gamificadas para enseñar Historia en Secundaria">🎮 Gamificación Historia</div>
+          <div class="chip" data-prompt="¿Cómo aplico el ABP en clase de Lengua con Bachillerato?">🔬 ABP Bachillerato</div>
+          <div class="chip" data-prompt="Explícame la fotosíntesis para alumnos de 6º de Primaria con analogías">🌱 Explicar fotosíntesis</div>
+          <div class="chip" data-prompt="Crea un examen de Geografía para 2º ESO con preguntas tipo test y desarrollo">✅ Examen Geografía</div>
+        </div>
+      </div>
+    </div>
+    <div class="input-area">
+      <div class="input-row">
+        <textarea id="user-input" placeholder="Pide un plan de clase, una rúbrica, una actividad..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+        <button id="send-btn" onclick="sendMessage()">▶</button>
+      </div>
+      <div class="input-meta">
+        <span>Enter para enviar · Shift+Enter nueva línea</span>
+        <a href="suscripcion.html">📚 500 prompts gratis →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="ft">
+    <a class="fl" href="index.html">ProfesorIA<span>.io</span></a>
+    <div class="flinks">
+      <a href="herramientas.html">Herramientas</a>
+      <a href="chatbot.html">Chat IA</a>
+      <a href="blog.html">Blog</a>
+      <a href="partners_profesoria.html">Partners</a>
+      <a href="suscripcion.html">Newsletter</a>
+    </div>
+    <div class="fc-copy">© 2026 ProfesorIA · Hecho con 🤖 IA</div>
+  </div>
+</footer>
+<script>
+
+function toggleMenu(){const h=document.getElementById('hamburger'),m=document.getElementById('mobileMenu');h.classList.toggle('open');m.classList.toggle('open');h.setAttribute('aria-expanded',h.classList.contains('open'));}
+const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*50);obs.unobserve(e.target);}});},{threshold:0.05});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+/* ── CONFIGURACIÓN ─── */
+/* SUSTITUIR CON TU ENDPOINT DE ORACLE CUANDO ESTÉ ACTIVO */
+var PROXY_URL = '[API-ORACLE-URL]';
+
+var SYSTEMS = {
+  docente: 'Eres un asistente IA especializado en educación para docentes hispanohablantes. Ayudas con planificación, metodología, evaluación y recursos. Respuestas prácticas y aplicables directamente en el aula. Responde en español.',
+  primaria: 'Eres un asistente IA para profesores de Educación Primaria (6-12 años). Especializado en metodologías activas, evaluación formativa y recursos para niños. Responde en español.',
+  secundaria: 'Eres un asistente IA para profesores de Secundaria y Bachillerato. Especializado en programaciones didácticas, evaluación por competencias y preparación de selectividad. Responde en español.',
+  evaluacion: 'Eres un experto en evaluación educativa. Diseñas rúbricas, exámenes, pruebas competenciales y sistemas de evaluación formativa. Responde en español.',
+  inclusion: 'Eres un especialista en educación inclusiva y atención a la diversidad. Adaptas materiales y metodologías para alumnos con NEE, NEAE y distintos ritmos de aprendizaje. Responde en español.'
+};
+
+var chatHistory=[];var activeCtx='docente';var isProcessing=false;
+
+function toggleCtx(el){document.querySelectorAll('.ctx-chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');activeCtx=el.dataset.ctx;}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,160)+'px';}
+function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}}
+function newChat(){chatHistory=[];var msgs=document.getElementById('messages');msgs.innerHTML=getWelcomeHTML();attachChips();}
+
+function getWelcomeHTML(){return '<div class="welcome" id="welcome-screen"><div class="w-icon">🏛️</div><h2 class="w-title">ProfesorIA <span>AI</span></h2><p class="w-desc">Tu asistente IA especializado en educación. Planes de clase, evaluación, metodología y recursos.</p><div class="chips" id="chips-container"><div class="chip" data-prompt="Crea un plan de clase de Matemáticas para 3º ESO sobre ecuaciones">📋 Plan de clase ESO</div><div class="chip" data-prompt="Diseña una rúbrica para un trabajo escrito de Primaria">📊 Rúbrica Primaria</div><div class="chip" data-prompt="5 actividades gamificadas para Historia en Secundaria">🎮 Gamificación Historia</div><div class="chip" data-prompt="Cómo aplicar ABP en Lengua con Bachillerato">🔬 ABP Bachillerato</div></div></div>';}
+
+function attachChips(){document.querySelectorAll('.chip[data-prompt]').forEach(c=>c.addEventListener('click',function(){document.getElementById('user-input').value=this.dataset.prompt;sendMessage();}));}
+
+function sendMessage(){
+  if(isProcessing)return;
+  var input=document.getElementById('user-input');
+  var userText=input.value.trim();
+  if(!userText)return;
+  var welcome=document.getElementById('welcome-screen');
+  if(welcome)welcome.remove();
+  appendMsg('user',userText);
+  input.value='';input.style.height='auto';
+  chatHistory.push({role:'user',content:userText});
+  isProcessing=true;
+  var btn=document.getElementById('send-btn');btn.disabled=true;btn.textContent='⏳';
+  var typId=appendTyping();
+  fetch(PROXY_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:SYSTEMS[activeCtx],messages:chatHistory})})
+  .then(r=>{removeTyping(typId);if(!r.ok)throw new Error(r.status===429?'Límite alcanzado. Vuelve en un momento.':'Error de conexión con el servidor.');return r.json();})
+  .then(d=>{var reply=d.reply||'';if(!reply)throw new Error('Respuesta vacía.');chatHistory.push({role:'assistant',content:reply});appendMsg('assistant',reply);})
+  .catch(e=>{removeTyping(typId);appendErr(e.message);})
+  .finally(()=>{isProcessing=false;btn.disabled=false;btn.textContent='▶';});
+}
+
+function appendMsg(role,text){
+  var msgs=document.getElementById('messages');
+  var w=document.createElement('div');w.className='msg '+role;
+  var av=document.createElement('div');av.className='msg-av';av.textContent=role==='user'?'👤':'🏛️';
+  var c=document.createElement('div');c.className='msg-content';
+  var n=document.createElement('div');n.className='msg-name';n.textContent=role==='user'?'Tú':'ProfesorIA AI';
+  var b=document.createElement('div');b.className='msg-bubble';
+  b.innerHTML=formatText(text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'));
+  c.appendChild(n);c.appendChild(b);
+  if(role==='assistant'){var acts=document.createElement('div');acts.className='msg-actions';var cpBtn=document.createElement('button');cpBtn.className='act-btn';cpBtn.textContent='Copiar';var ct=text;cpBtn.addEventListener('click',function(){navigator.clipboard.writeText(ct).then(()=>{cpBtn.textContent='✓ Copiado';setTimeout(()=>cpBtn.textContent='Copiar',2000);});});acts.appendChild(cpBtn);c.appendChild(acts);}
+  w.appendChild(av);w.appendChild(c);msgs.appendChild(w);msgs.scrollTop=msgs.scrollHeight;
+}
+function appendTyping(){var msgs=document.getElementById('messages');var id='ty_'+Date.now();var d=document.createElement('div');d.className='msg assistant';d.id=id;d.innerHTML='<div class="msg-av">🏛️</div><div class="msg-content"><div class="msg-name">ProfesorIA AI</div><div class="typing"><span></span><span></span><span></span></div></div>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return id;}
+function removeTyping(id){var el=document.getElementById(id);if(el)el.remove();}
+function appendErr(msg){var msgs=document.getElementById('messages');var d=document.createElement('div');d.className='msg assistant';d.innerHTML='<div class="msg-av">🏛️</div><div class="msg-content"><div class="msg-name">ProfesorIA AI</div><div class="err-bubble">⚠️ '+msg+'</div></div>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
+function formatText(t){t=t.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');t=t.replace(/\*([^*\n]+)\*/g,'<em>$1</em>');t=t.replace(/^### (.+)$/gm,'<h4 style="color:var(--cyan);margin:10px 0 5px;font-size:13px;">$1</h4>');t=t.replace(/^## (.+)$/gm,'<h3 style="color:var(--cyan);margin:12px 0 6px;">$1</h3>');t=t.replace(/^- (.+)$/gm,'<li style="margin-bottom:3px;padding-left:8px;">$1</li>');t=t.replace(/\n\n/g,'</p><p style="margin-bottom:8px;">');t=t.replace(/\n/g,'<br>');return '<p style="margin-bottom:8px;">'+t+'</p>';}
+
+window.addEventListener('load',attachChips);
+document.querySelectorAll('.qp[data-prompt]').forEach(b=>b.addEventListener('click',function(){document.getElementById('user-input').value=this.dataset.prompt;sendMessage();}));
+</script>
+</body>
+</html>
