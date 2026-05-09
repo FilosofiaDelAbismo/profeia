@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Utilidades para profesores — ProfesorIA</title>
+<meta name="description" content="8 utilidades gratuitas para el aula: contador de caracteres, calculadora de notas, generador de grupos, cronómetro, pomodoro, zonas horarias y conversor de calificaciones. Sin registro.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://iaprofesor.com/utilidades.html">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://iaprofesor.com/utilidades.html">
+<meta property="og:title" content="Utilidades para profesores — ProfesorIA">
+<meta property="og:description" content="8 utilidades gratuitas para el aula. Sin IA, sin registro, sin uploads.">
+<meta property="og:site_name" content="ProfesorIA">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Utilidades para profesores — ProfesorIA">
+<meta name="twitter:description" content="8 utilidades gratuitas para el aula.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+
+<link rel="stylesheet" href="/assets/theme.css">
+<link rel="stylesheet" href="/assets/base.css">
+
+<script defer data-domain="iaprofesor.com" src="https://analytics.digiprompts.io/js/script.js"></script>
+
+<style>
+.util-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+.util-card {
+  display: flex; flex-direction: column;
+  text-decoration: none;
+  background: var(--ink2);
+  border: 1px solid var(--wall);
+  border-radius: var(--r12);
+  padding: 28px;
+  transition: all 0.18s;
+  position: relative;
+  overflow: hidden;
+}
+.util-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 0% 0%, var(--lime-bg), transparent 60%);
+  opacity: 0; transition: opacity 0.25s;
+  pointer-events: none;
+}
+.util-card:hover { transform: translateY(-3px); border-color: var(--lime); }
+.util-card:hover::before { opacity: 1; }
+.util-card.cat-evaluacion:hover { border-color: var(--violet); }
+.util-card.cat-aula:hover { border-color: var(--sky); }
+.util-card.cat-estudiantes:hover { border-color: var(--gold); }
+.util-card.cat-organizacion:hover { border-color: var(--coral); }
+.util-icon { font-size: 36px; margin-bottom: 16px; }
+.util-card h3 {
+  font-family: var(--display); font-size: 22px; font-weight: 700;
+  color: var(--mist); margin-bottom: 8px; letter-spacing: -0.3px;
+}
+.util-card p {
+  font-size: 14px; color: var(--mist2); line-height: 1.6;
+  margin-bottom: 20px; flex: 1;
+}
+.util-foot {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: auto;
+}
+.util-arrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.5px;
+  text-transform: uppercase; color: var(--lime);
+}
+
+.filters {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  justify-content: center;
+  margin: 32px 0 8px;
+}
+
+.section-title {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--mist3); margin-bottom: 16px; text-align: center;
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="/index.html">Profesor<em>IA</em></a>
+  <ul class="nav-links">
+    <li><a href="/index.html">Inicio</a></li>
+    <li><a href="/herramientas.html">Herramientas</a></li>
+    <li class="nav-dd">
+      <button class="nav-dd-trigger" aria-expanded="false">Utilidades <span aria-hidden="true">▾</span></button>
+      <div class="nav-dd-menu" role="menu">
+        <a href="/tools/contador-caracteres.html"><span>📝</span> Contador de caracteres</a>
+        <a href="/tools/calculadora-notas.html"><span>🧮</span> Calculadora de notas</a>
+        <a href="/tools/generador-grupos.html"><span>👥</span> Generador de grupos</a>
+        <a href="/tools/conversor-mayusculas.html"><span>🔤</span> Conversor mayúsculas</a>
+        <a href="/tools/cronometro-aula.html"><span>⏱️</span> Cronómetro de aula</a>
+        <a href="/tools/pomodoro-estudio.html"><span>🍅</span> Pomodoro</a>
+        <a href="/tools/conversor-zonas-horarias.html"><span>🌐</span> Zonas horarias</a>
+        <a href="/tools/conversor-calificaciones.html"><span>🎓</span> Calificaciones</a>
+        <hr><a href="/utilidades.html"><strong>Ver todas →</strong></a>
+      </div>
+    </li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/partners_profesoria.html">Partners</a></li>
+    <li><a href="/chatbot.html">Chat IA</a></li>
+  </ul>
+  <a class="btn-nav" href="/suscripcion.html">Newsletter</a>
+  <button class="hamburger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/index.html">Inicio</a>
+  <a href="/herramientas.html">Herramientas IA</a>
+  <div class="m-section">Utilidades</div>
+  <a href="/tools/contador-caracteres.html">📝 Contador de caracteres</a>
+  <a href="/tools/calculadora-notas.html">🧮 Calculadora de notas</a>
+  <a href="/tools/generador-grupos.html">👥 Generador de grupos</a>
+  <a href="/tools/conversor-mayusculas.html">🔤 Conversor mayúsculas</a>
+  <a href="/tools/cronometro-aula.html">⏱️ Cronómetro</a>
+  <a href="/tools/pomodoro-estudio.html">🍅 Pomodoro</a>
+  <a href="/tools/conversor-zonas-horarias.html">🌐 Zonas horarias</a>
+  <a href="/tools/conversor-calificaciones.html">🎓 Calificaciones</a>
+  <a href="/utilidades.html">Ver todas →</a>
+  <div class="m-section">Más</div>
+  <a href="/blog.html">Blog</a>
+  <a href="/partners_profesoria.html">Partners</a>
+  <a href="/chatbot.html">Chat IA</a>
+  <a href="/suscripcion.html" class="m-cta">Newsletter</a>
+</div>
+
+<main class="page">
+
+<section class="hero-wrap">
+  <div class="hero-grid-bg"></div>
+  <div class="hero">
+    <span class="hero-pill"><span class="hero-pill-dot"></span> 8 herramientas · Sin registro · 0€</span>
+    <h1>Las <em>utilidades</em><br>que tu aula necesitaba</h1>
+    <p class="lead">Pequeñas joyas para el día a día docente: cálculos rápidos, generadores y temporizadores. Sin IA, sin uploads, sin trampa. 100&nbsp;% en tu navegador.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a class="btn btn-primary btn-lg" href="#listado">Ver utilidades</a>
+      <a class="btn btn-secondary btn-lg" href="/herramientas.html">Herramientas IA →</a>
+    </div>
+  </div>
+</section>
+
+<section class="shell" id="listado" style="padding-top:56px;padding-bottom:24px">
+  <div class="section-title">Filtra por categoría</div>
+  <div class="filters" id="filters">
+    <button class="pill active" data-filter="all">Todas</button>
+    <button class="pill" data-filter="texto">Texto</button>
+    <button class="pill" data-filter="evaluacion">Evaluación</button>
+    <button class="pill" data-filter="aula">Aula</button>
+    <button class="pill" data-filter="estudiantes">Estudiantes</button>
+    <button class="pill" data-filter="organizacion">Organización</button>
+  </div>
+
+  <div class="util-grid" id="grid">
+
+    <a class="util-card cat-texto" data-cat="texto" href="/tools/contador-caracteres.html">
+      <div class="util-icon">📝</div>
+      <h3>Contador de caracteres</h3>
+      <p>Caracteres, palabras, frases, tiempo de lectura y barras de progreso para 6 límites académicos típicos.</p>
+      <div class="util-foot"><span class="pill cat-texto">Texto</span><span class="util-arrow">Abrir →</span></div>
+    </a>
+
+    <a class="util-card cat-evaluacion" data-cat="evaluacion" href="/tools/calculadora-notas.html">
+      <div class="util-icon">🧮</div>
+      <h3>Calculadora de notas ponderada</h3>
+      <p>Suma pruebas, asigna pesos, valida que sumen 100 % y obtén nota final con equivalencia cualitativa.</p>
+      <div class="util-foot"><span class="pill cat-evaluacion">Evaluación</span><span class="util-arrow">Abrir →</span></div>
+    </a>
+
+    <a class="util-card cat-estudiantes" data-cat="estudiantes" href="/tools/generador-grupos.html">
+      <div class="util-icon">👥</div>
+      <h3>Generador de grupos aleatorios</h3>
+      <p>Pega tu lista, elige número o tamaño, excluye ausencias y genera grupos. Modo presentación incluido.</p>
+      <div class="util-foot"><span class="pill cat-estudiantes">Estudiantes</span><span class="util-arrow">Abrir →</span></div>
+    </a>
+
+    <a class="util-card cat-texto" data-cat="texto" href="/tools/conversor-mayusculas.html">
+      <div class="util-icon">🔤</div>
+      <h3>Conversor de mayúsculas</h3>
+      <p>8 transformaciones en vivo: MAYÚS, minús, Title Case, Sentence case, sin acentos, sin saltos…</p>
+      <div class="util-foot"><span class="pill cat-texto">Texto</span><span class="util-arrow">Abrir →</span></div>
+    </a>
+
+    <a class="util-card cat-aula" data-cat="aula" href="/tools/cronometro-aula.html">
+      <div class="util-icon">⏱️</div>
+      <h3>Cronómetro de aula</h3>
+      <p>Temporizador y cronómetro con display gigante para proyectar, alarma y modo pantalla completa.</p>
+      <div class="util-foot"><span class="pill cat-aula">Aula</span><span class="util-arrow">Abrir →</span></div>
+    </a>
+
+    <a class="util-card cat-estudiantes" data-cat="estudiantes" href="/tools/pomodoro-estudio.html">
+      <div class="util-icon">🍅</div>
+      <h3>Pomodoro de estudio</h3>
+      <p>Configura tu ciclo, encadena pomodoros y descansos, recibe avisos. Lista de tareas opcional.</p>
+      <div class="util-foot"><span class="pill cat-estudiantes">Estudiantes</span><span class="util-arrow">Abrir →</span></div>
+    </a>
+
+    <a class="util-card cat-organizacion" data-cat="organizacion" href="/tools/conversor-zonas-horarias.html">
+      <div class="util-icon">🌐</div>
+      <h3>Zonas horarias</h3>
+      <p>Reloj en vivo en 9 ciudades hispanohablantes y modo "Programar clase" con enlace a Google Calendar.</p>
+      <div class="util-foot"><span class="pill cat-organizacion">Organización</span><span class="util-arrow">Abrir →</span></div>
+    </a>
+
+    <a class="util-card cat-evaluacion" data-cat="evaluacion" href="/tools/conversor-calificaciones.html">
+      <div class="util-icon">🎓</div>
+      <h3>Conversor de calificaciones</h3>
+      <p>Equivalencias entre 9 sistemas (España, México, Argentina, Colombia, Chile, EE. UU., UK, ECTS).</p>
+      <div class="util-foot"><span class="pill cat-evaluacion">Evaluación</span><span class="util-arrow">Abrir →</span></div>
+    </a>
+
+  </div>
+</section>
+
+<section class="shell" style="margin-top:64px">
+  <div class="card" style="text-align:center;padding:40px 24px">
+    <div class="hero-pill" style="margin-bottom:16px"><span class="hero-pill-dot"></span> ¿Necesitas más?</div>
+    <h2 style="font-family:var(--display);font-size:28px;font-weight:700;color:var(--mist);margin-bottom:12px">¿Te falta una utilidad?</h2>
+    <p style="color:var(--mist2);max-width:520px;margin:0 auto 20px">Si echas en falta algo concreto para tu día a día, escríbeme y la añado al listado.</p>
+    <a class="btn btn-secondary" href="/suscripcion.html">Sugerir desde la newsletter →</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <a class="footer-logo" href="/index.html">Profesor<em>IA</em></a>
+      <p class="footer-tag">Herramientas IA gratuitas para profesores y docentes hispanohablantes.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Producto</h4>
+      <a href="/herramientas.html">Herramientas IA</a>
+      <a href="/utilidades.html">Utilidades</a>
+      <a href="/chatbot.html">Chat IA</a>
+    </div>
+    <div class="footer-col">
+      <h4>Recursos</h4>
+      <a href="/blog.html">Blog</a>
+      <a href="/suscripcion.html">Newsletter</a>
+      <a href="/partners_profesoria.html">Partners</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="/politica-cookies-iaprofesor.html">Política de cookies</a>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 ProfesorIA · Hecho para docentes</p></div>
+</footer>
+
+<script src="/assets/common.js" defer></script>
+<script>
+  // Filtros pill
+  document.addEventListener('DOMContentLoaded', function(){
+    var pills = document.querySelectorAll('#filters .pill');
+    var cards = document.querySelectorAll('#grid .util-card');
+    pills.forEach(function(p){
+      p.addEventListener('click', function(){
+        pills.forEach(function(x){ x.classList.remove('active'); });
+        p.classList.add('active');
+        var f = p.dataset.filter;
+        cards.forEach(function(c){
+          c.style.display = (f === 'all' || c.dataset.cat === f) ? '' : 'none';
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>
