@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conversor de mayúsculas y formatos — ProfesorIA</title>
+<meta name="description" content="Convierte texto entre 8 formatos en vivo: MAYÚSCULAS, minúsculas, Title Case, sin acentos, sin saltos de línea y más. Sin registro.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://iaprofesor.com/tools/conversor-mayusculas.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://iaprofesor.com/tools/conversor-mayusculas.html">
+<meta property="og:title" content="Conversor de mayúsculas — ProfesorIA">
+<meta property="og:description" content="8 transformaciones de texto en vivo, con copia individual.">
+<meta property="og:site_name" content="ProfesorIA">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+
+<link rel="stylesheet" href="/assets/theme.css">
+<link rel="stylesheet" href="/assets/base.css">
+
+<script defer data-domain="iaprofesor.com" src="https://analytics.digiprompts.io/js/script.js"></script>
+
+<style>
+.cm-input-wrap { margin-bottom: 24px; }
+.cm-input-wrap textarea { min-height: 160px; font-family: var(--mono); font-size: 14px; line-height: 1.6; }
+.cm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.cm-out { background: var(--ink2); border: 1px solid var(--wall); border-radius: var(--r12); padding: 16px; display: flex; flex-direction: column; }
+.cm-out-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; gap: 12px; }
+.cm-out-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase; color: var(--lime); }
+.cm-out-meta { font-family: var(--mono); font-size: 10px; color: var(--mist3); }
+.cm-out-body { background: var(--ink3); border: 1px solid var(--wall); border-radius: var(--r8); padding: 12px; min-height: 92px; font-family: var(--mono); font-size: 13px; color: var(--mist); white-space: pre-wrap; word-break: break-word; line-height: 1.55; flex: 1; max-height: 200px; overflow-y: auto; }
+.cm-out-actions { display: flex; gap: 8px; margin-top: 10px; }
+@media (max-width: 768px) { .cm-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="/index.html">Profesor<em>IA</em></a>
+  <ul class="nav-links">
+    <li><a href="/index.html">Inicio</a></li>
+    <li><a href="/herramientas.html">Herramientas</a></li>
+    <li class="nav-dd">
+      <button class="nav-dd-trigger" aria-expanded="false">Utilidades <span aria-hidden="true">▾</span></button>
+      <div class="nav-dd-menu" role="menu">
+        <a href="/tools/contador-caracteres.html"><span>📝</span> Contador de caracteres</a>
+        <a href="/tools/calculadora-notas.html"><span>🧮</span> Calculadora de notas</a>
+        <a href="/tools/generador-grupos.html"><span>👥</span> Generador de grupos</a>
+        <a href="/tools/conversor-mayusculas.html"><span>🔤</span> Conversor mayúsculas</a>
+        <a href="/tools/cronometro-aula.html"><span>⏱️</span> Cronómetro de aula</a>
+        <a href="/tools/pomodoro-estudio.html"><span>🍅</span> Pomodoro</a>
+        <a href="/tools/conversor-zonas-horarias.html"><span>🌐</span> Zonas horarias</a>
+        <a href="/tools/conversor-calificaciones.html"><span>🎓</span> Calificaciones</a>
+        <hr><a href="/utilidades.html"><strong>Ver todas →</strong></a>
+      </div>
+    </li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/partners_profesoria.html">Partners</a></li>
+    <li><a href="/chatbot.html">Chat IA</a></li>
+  </ul>
+  <a class="btn-nav" href="/suscripcion.html">Newsletter</a>
+  <button class="hamburger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu">
+  <a href="/index.html">Inicio</a><a href="/herramientas.html">Herramientas IA</a>
+  <div class="m-section">Utilidades</div>
+  <a href="/utilidades.html">Ver todas las utilidades</a>
+  <a href="/blog.html">Blog</a><a href="/partners_profesoria.html">Partners</a><a href="/chatbot.html">Chat IA</a>
+  <a href="/suscripcion.html" class="m-cta">Newsletter</a>
+</div>
+
+<main class="page">
+
+<section class="tool-head">
+  <div class="crumb"><a href="/utilidades.html">← Volver a utilidades</a></div>
+  <span class="pill cat-texto">Texto</span>
+  <h1>Conversor de <em>mayúsculas</em> y formatos</h1>
+  <p>Pega tu texto y obtén 8 transformaciones simultáneas. Cada salida con su propio botón de copiar.</p>
+</section>
+
+<section class="tool-body" style="display:block">
+
+  <div class="card cm-input-wrap">
+    <div class="field">
+      <label class="label" for="cm-in">Texto original</label>
+      <textarea id="cm-in" class="textarea" placeholder="Pega aquí tu texto…"></textarea>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+      <button class="btn btn-ghost" id="cm-clear">Limpiar</button>
+      <button class="btn btn-secondary" id="cm-sample">Usar texto de ejemplo</button>
+    </div>
+  </div>
+
+  <div class="cm-grid" id="cm-outs"></div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col"><a class="footer-logo" href="/index.html">Profesor<em>IA</em></a><p class="footer-tag">Herramientas IA gratuitas para profesores y docentes hispanohablantes.</p></div>
+    <div class="footer-col"><h4>Producto</h4><a href="/herramientas.html">Herramientas IA</a><a href="/utilidades.html">Utilidades</a><a href="/chatbot.html">Chat IA</a></div>
+    <div class="footer-col"><h4>Recursos</h4><a href="/blog.html">Blog</a><a href="/suscripcion.html">Newsletter</a><a href="/partners_profesoria.html">Partners</a></div>
+    <div class="footer-col"><h4>Legal</h4><a href="/politica-cookies-iaprofesor.html">Política de cookies</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 ProfesorIA · Hecho para docentes</p></div>
+</footer>
+
+<script src="/assets/common.js" defer></script>
+<script>
+(function(){
+  function toUpper(t){ return t.toUpperCase(); }
+  function toLower(t){ return t.toLowerCase(); }
+  function titleCase(t){
+    return t.toLowerCase().replace(/(^|\s|[¿¡—\-(\[«"'])(\p{L})/gu, function(m, p, c){ return p + c.toUpperCase(); });
+  }
+  function sentenceCase(t){
+    var s = t.toLowerCase();
+    return s.replace(/(^\s*|[.!?…]\s+)(\p{L})/gu, function(m, pre, c){ return pre + c.toUpperCase(); });
+  }
+  function invertCase(t){
+    return t.replace(/\p{L}/gu, function(c){
+      return c === c.toLowerCase() ? c.toUpperCase() : c.toLowerCase();
+    });
+  }
+  function noAccents(t){
+    return t.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ñ/g,'n').replace(/Ñ/g,'N');
+  }
+  function noLineBreaks(t){
+    return t.replace(/\s*\r?\n\s*/g, ' ').replace(/[ \t]+/g, ' ').trim();
+  }
+  function noDoubleSpaces(t){
+    return t.replace(/[ \t]+/g, ' ').replace(/\n{3,}/g, '\n\n');
+  }
+
+  var TRANSFORMS = [
+    { key:'upper',    title:'MAYÚSCULAS',          fn:toUpper },
+    { key:'lower',    title:'minúsculas',          fn:toLower },
+    { key:'title',    title:'Title Case',          fn:titleCase },
+    { key:'sentence', title:'Sentence case',       fn:sentenceCase },
+    { key:'invert',   title:'iNVERTIDA',           fn:invertCase },
+    { key:'noacc',    title:'sin acentos',         fn:noAccents },
+    { key:'nobr',     title:'sin saltos de línea', fn:noLineBreaks },
+    { key:'nosp',     title:'sin espacios duplicados', fn:noDoubleSpaces }
+  ];
+
+  var grid = document.getElementById('cm-outs');
+  var input = document.getElementById('cm-in');
+  var outs = {};
+
+  TRANSFORMS.forEach(function(T){
+    var box = document.createElement('div');
+    box.className = 'cm-out';
+    box.innerHTML =
+      '<div class="cm-out-head">' +
+        '<span class="cm-out-title">' + T.title + '</span>' +
+        '<span class="cm-out-meta" id="meta-'+T.key+'">0 caracteres</span>' +
+      '</div>' +
+      '<div class="cm-out-body" id="out-'+T.key+'"></div>' +
+      '<div class="cm-out-actions">' +
+        '<button class="btn btn-ghost btn-sm" data-key="'+T.key+'" data-act="copy">Copiar</button>' +
+      '</div>';
+    grid.appendChild(box);
+    outs[T.key] = T;
+  });
+
+  function update(){
+    var t = input.value;
+    TRANSFORMS.forEach(function(T){
+      var v = T.fn(t);
+      var el = document.getElementById('out-'+T.key);
+      el.textContent = v;
+      el.dataset.value = v;
+      document.getElementById('meta-'+T.key).textContent = v.length.toLocaleString('es') + ' caracteres';
+    });
+  }
+
+  grid.addEventListener('click', function(e){
+    var b = e.target.closest('button[data-act="copy"]');
+    if (!b) return;
+    var k = b.dataset.key;
+    var v = document.getElementById('out-'+k).dataset.value || '';
+    if (!v) { window.showToast && window.showToast('No hay texto que copiar', { error: true }); return; }
+    window.copyText && window.copyText(v, '✓ Copiado: ' + outs[k].title);
+  });
+
+  document.getElementById('cm-clear').addEventListener('click', function(){
+    input.value = ''; update(); input.focus();
+  });
+  document.getElementById('cm-sample').addEventListener('click', function(){
+    input.value = 'La fotosíntesis es el proceso por el cual las plantas verdes y otros organismos transforman la energía lumínica en energía química, que se almacena en moléculas de glucosa.\n\nEs fundamental para la vida en la Tierra.';
+    update();
+  });
+
+  input.addEventListener('input', update);
+  update();
+})();
+</script>
+</body>
+</html>

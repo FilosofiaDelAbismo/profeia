@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contador de caracteres y palabras — ProfesorIA</title>
+<meta name="description" content="Cuenta caracteres, palabras, frases y tiempo de lectura en vivo. Barras de progreso para 6 límites académicos típicos. Sin registro.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://iaprofesor.com/tools/contador-caracteres.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://iaprofesor.com/tools/contador-caracteres.html">
+<meta property="og:title" content="Contador de caracteres y palabras — ProfesorIA">
+<meta property="og:description" content="Caracteres, palabras, tiempo de lectura y límites académicos en vivo.">
+<meta property="og:site_name" content="ProfesorIA">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+
+<link rel="stylesheet" href="/assets/theme.css">
+<link rel="stylesheet" href="/assets/base.css">
+
+<script defer data-domain="iaprofesor.com" src="https://analytics.digiprompts.io/js/script.js"></script>
+
+<style>
+.cc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.cc-textarea { min-height: 360px; font-family: var(--mono); font-size: 14px; line-height: 1.6; }
+.cc-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+.cc-metric { background: var(--ink3); border: 1px solid var(--wall); border-radius: var(--r8); padding: 14px 16px; }
+.cc-metric .v { font-family: var(--mono); font-size: 22px; color: var(--lime); font-weight: 500; line-height: 1.2; }
+.cc-metric .l { font-family: var(--mono); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--mist3); margin-top: 4px; }
+.cc-limit { padding: 12px 0; border-bottom: 1px solid var(--wall); }
+.cc-limit:last-child { border-bottom: none; }
+.cc-limit-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+.cc-limit-name { font-size: 13px; color: var(--mist); }
+.cc-limit-count { font-family: var(--mono); font-size: 11px; color: var(--mist2); }
+.cc-limit-count.ok { color: var(--lime); }
+.cc-limit-count.warn { color: var(--gold); }
+.cc-limit-count.over { color: var(--coral); }
+.cc-actions { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+@media (max-width: 900px) { .cc-grid { grid-template-columns: 1fr; } .cc-metrics { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="/index.html">Profesor<em>IA</em></a>
+  <ul class="nav-links">
+    <li><a href="/index.html">Inicio</a></li>
+    <li><a href="/herramientas.html">Herramientas</a></li>
+    <li class="nav-dd">
+      <button class="nav-dd-trigger" aria-expanded="false">Utilidades <span aria-hidden="true">▾</span></button>
+      <div class="nav-dd-menu" role="menu">
+        <a href="/tools/contador-caracteres.html"><span>📝</span> Contador de caracteres</a>
+        <a href="/tools/calculadora-notas.html"><span>🧮</span> Calculadora de notas</a>
+        <a href="/tools/generador-grupos.html"><span>👥</span> Generador de grupos</a>
+        <a href="/tools/conversor-mayusculas.html"><span>🔤</span> Conversor mayúsculas</a>
+        <a href="/tools/cronometro-aula.html"><span>⏱️</span> Cronómetro de aula</a>
+        <a href="/tools/pomodoro-estudio.html"><span>🍅</span> Pomodoro</a>
+        <a href="/tools/conversor-zonas-horarias.html"><span>🌐</span> Zonas horarias</a>
+        <a href="/tools/conversor-calificaciones.html"><span>🎓</span> Calificaciones</a>
+        <hr><a href="/utilidades.html"><strong>Ver todas →</strong></a>
+      </div>
+    </li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/partners_profesoria.html">Partners</a></li>
+    <li><a href="/chatbot.html">Chat IA</a></li>
+  </ul>
+  <a class="btn-nav" href="/suscripcion.html">Newsletter</a>
+  <button class="hamburger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu">
+  <a href="/index.html">Inicio</a><a href="/herramientas.html">Herramientas IA</a>
+  <div class="m-section">Utilidades</div>
+  <a href="/utilidades.html">Ver todas las utilidades</a>
+  <a href="/blog.html">Blog</a><a href="/partners_profesoria.html">Partners</a><a href="/chatbot.html">Chat IA</a>
+  <a href="/suscripcion.html" class="m-cta">Newsletter</a>
+</div>
+
+<main class="page">
+
+<section class="tool-head">
+  <div class="crumb"><a href="/utilidades.html">← Volver a utilidades</a></div>
+  <span class="pill cat-texto">Texto</span>
+  <h1>Contador de <em>caracteres</em> y palabras</h1>
+  <p>Métricas en vivo y barras de progreso para los límites académicos más típicos. Todo en tu navegador.</p>
+</section>
+
+<section class="tool-body cc-grid">
+
+  <div class="card">
+    <div class="field">
+      <label class="label" for="cc-input">Pega o escribe tu texto</label>
+      <textarea id="cc-input" class="textarea cc-textarea" placeholder="Empieza a escribir y mira las métricas en vivo…"></textarea>
+    </div>
+    <div class="cc-actions">
+      <button class="btn btn-ghost" id="cc-clear">Limpiar</button>
+      <button class="btn btn-primary" data-copy="#cc-input" data-copy-msg="✓ Texto copiado">Copiar texto</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="cc-metrics">
+      <div class="cc-metric"><div class="v" id="m-chars">0</div><div class="l">Caracteres</div></div>
+      <div class="cc-metric"><div class="v" id="m-chars-ns">0</div><div class="l">Sin espacios</div></div>
+      <div class="cc-metric"><div class="v" id="m-words">0</div><div class="l">Palabras</div></div>
+      <div class="cc-metric"><div class="v" id="m-sentences">0</div><div class="l">Frases</div></div>
+      <div class="cc-metric"><div class="v" id="m-paragraphs">0</div><div class="l">Párrafos</div></div>
+      <div class="cc-metric"><div class="v" id="m-time">0&nbsp;s</div><div class="l">Tiempo lectura</div></div>
+    </div>
+
+    <div class="label" style="margin-bottom:8px">Límites académicos</div>
+    <div id="cc-limits"></div>
+  </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col"><a class="footer-logo" href="/index.html">Profesor<em>IA</em></a><p class="footer-tag">Herramientas IA gratuitas para profesores y docentes hispanohablantes.</p></div>
+    <div class="footer-col"><h4>Producto</h4><a href="/herramientas.html">Herramientas IA</a><a href="/utilidades.html">Utilidades</a><a href="/chatbot.html">Chat IA</a></div>
+    <div class="footer-col"><h4>Recursos</h4><a href="/blog.html">Blog</a><a href="/suscripcion.html">Newsletter</a><a href="/partners_profesoria.html">Partners</a></div>
+    <div class="footer-col"><h4>Legal</h4><a href="/politica-cookies-iaprofesor.html">Política de cookies</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 ProfesorIA · Hecho para docentes</p></div>
+</footer>
+
+<script src="/assets/common.js" defer></script>
+<script>
+(function(){
+  var LIMITS = [
+    { id:'tweet', name:'Tweet pedagógico', max:280 },
+    { id:'resumen', name:'Resumen breve', max:500 },
+    { id:'enunciado', name:'Enunciado pregunta corta', max:300 },
+    { id:'comentario', name:'Comentario evaluación', max:1000 },
+    { id:'abstract', name:'Abstract académico', max:1500 },
+    { id:'lms', name:'Descripción actividad LMS', max:2000 }
+  ];
+
+  var input = document.getElementById('cc-input');
+  var limitsBox = document.getElementById('cc-limits');
+
+  // Render barras
+  LIMITS.forEach(function(L){
+    var row = document.createElement('div');
+    row.className = 'cc-limit';
+    row.innerHTML =
+      '<div class="cc-limit-head">' +
+        '<span class="cc-limit-name">'+L.name+'</span>' +
+        '<span class="cc-limit-count" id="cnt-'+L.id+'">0 / '+L.max+'</span>' +
+      '</div>' +
+      '<div class="progress" id="prog-'+L.id+'"><div class="bar" style="width:0%"></div></div>';
+    limitsBox.appendChild(row);
+  });
+
+  function countSentences(t){
+    var m = t.match(/[^.!?…]+[.!?…]+/g);
+    return m ? m.length : (t.trim() ? 1 : 0);
+  }
+  function countParagraphs(t){
+    if (!t.trim()) return 0;
+    return t.split(/\n{2,}|\r\n\r\n/).filter(function(p){ return p.trim().length>0; }).length || 1;
+  }
+  function countWords(t){
+    var m = t.trim().match(/\S+/g);
+    return m ? m.length : 0;
+  }
+  function fmtTime(s){
+    if (s < 60) return Math.max(1, Math.round(s)) + ' s';
+    var m = Math.floor(s/60), r = Math.round(s%60);
+    return m + ' min' + (r ? ' '+r+' s' : '');
+  }
+
+  function update(){
+    var t = input.value;
+    var chars = t.length;
+    var charsNs = t.replace(/\s/g, '').length;
+    var words = countWords(t);
+    var sentences = countSentences(t);
+    var paragraphs = countParagraphs(t);
+    var seconds = words / 200 * 60;
+
+    document.getElementById('m-chars').textContent = chars.toLocaleString('es');
+    document.getElementById('m-chars-ns').textContent = charsNs.toLocaleString('es');
+    document.getElementById('m-words').textContent = words.toLocaleString('es');
+    document.getElementById('m-sentences').textContent = sentences;
+    document.getElementById('m-paragraphs').textContent = paragraphs;
+    document.getElementById('m-time').textContent = words ? fmtTime(seconds) : '0 s';
+
+    LIMITS.forEach(function(L){
+      var pct = (chars / L.max) * 100;
+      var bar = document.querySelector('#prog-'+L.id);
+      var cnt = document.getElementById('cnt-'+L.id);
+      cnt.textContent = chars.toLocaleString('es') + ' / ' + L.max;
+      cnt.classList.remove('ok','warn','over');
+      bar.classList.remove('warn','danger');
+      if (pct > 100) {
+        bar.classList.add('danger'); cnt.classList.add('over');
+      } else if (pct >= 85) {
+        bar.classList.add('warn'); cnt.classList.add('warn');
+      } else if (chars > 0) {
+        cnt.classList.add('ok');
+      }
+      bar.querySelector('.bar').style.width = Math.min(100, pct) + '%';
+    });
+  }
+
+  input.addEventListener('input', update);
+  document.getElementById('cc-clear').addEventListener('click', function(){
+    input.value = ''; update(); input.focus();
+  });
+  update();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pomodoro para estudio — ProfesorIA</title>
+<meta name="description" content="Técnica Pomodoro configurable: 25 min de estudio + 5 min de descanso, descanso largo cada 4. Notificaciones, pantalla completa y lista de tareas.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://iaprofesor.com/tools/pomodoro-estudio.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://iaprofesor.com/tools/pomodoro-estudio.html">
+<meta property="og:title" content="Pomodoro para estudio — ProfesorIA">
+<meta property="og:description" content="Pomodoro configurable con notificaciones y tareas.">
+<meta property="og:site_name" content="ProfesorIA">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+
+<link rel="stylesheet" href="/assets/theme.css">
+<link rel="stylesheet" href="/assets/base.css">
+
+<script defer data-domain="iaprofesor.com" src="https://analytics.digiprompts.io/js/script.js"></script>
+
+<style>
+.pm-display {
+  font-family: var(--mono);
+  font-size: clamp(80px, 16vw, 200px);
+  font-weight: 500; letter-spacing: -3px;
+  color: var(--mist); text-align: center;
+  font-variant-numeric: tabular-nums;
+  line-height: 1; padding: 12px 0;
+}
+.pm-phase {
+  font-family: var(--mono); font-size: 12px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--lime);
+  text-align: center; margin-bottom: 8px;
+}
+.pm-phase.break { color: var(--sky); }
+.pm-phase.long { color: var(--violet); }
+.pm-cycles { text-align: center; font-family: var(--mono); font-size: 11px; color: var(--mist3); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+.pm-progress { width: 100%; height: 6px; background: var(--ink3); border-radius: 100px; overflow: hidden; margin-bottom: 24px; }
+.pm-progress > .b { height: 100%; background: var(--lime); transition: width 1s linear, background 0.3s; width: 0%; }
+.pm-progress.break > .b { background: var(--sky); }
+.pm-progress.long > .b { background: var(--violet); }
+
+.pm-config {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px; margin-bottom: 24px;
+}
+.pm-controls { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 16px; }
+
+.pm-tasks { margin-top: 24px; }
+.pm-task-add { display: flex; gap: 8px; margin-bottom: 12px; }
+.pm-task {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px; background: var(--ink3);
+  border: 1px solid var(--wall); border-radius: var(--r8);
+  margin-bottom: 6px; font-size: 14px; color: var(--mist);
+}
+.pm-task.done { color: var(--mist3); text-decoration: line-through; }
+.pm-task button { margin-left: auto; }
+
+:fullscreen .nav, :fullscreen .footer, :fullscreen .tool-head { display: none !important; }
+:fullscreen .tool-body { margin: 0 !important; padding: 24px !important; max-width: 100% !important; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+:fullscreen .card { width: 100%; max-width: 1200px; }
+:fullscreen .pm-display { font-size: clamp(120px, 22vw, 320px); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="/index.html">Profesor<em>IA</em></a>
+  <ul class="nav-links">
+    <li><a href="/index.html">Inicio</a></li>
+    <li><a href="/herramientas.html">Herramientas</a></li>
+    <li class="nav-dd">
+      <button class="nav-dd-trigger" aria-expanded="false">Utilidades <span aria-hidden="true">▾</span></button>
+      <div class="nav-dd-menu" role="menu">
+        <a href="/tools/contador-caracteres.html"><span>📝</span> Contador de caracteres</a>
+        <a href="/tools/calculadora-notas.html"><span>🧮</span> Calculadora de notas</a>
+        <a href="/tools/generador-grupos.html"><span>👥</span> Generador de grupos</a>
+        <a href="/tools/conversor-mayusculas.html"><span>🔤</span> Conversor mayúsculas</a>
+        <a href="/tools/cronometro-aula.html"><span>⏱️</span> Cronómetro de aula</a>
+        <a href="/tools/pomodoro-estudio.html"><span>🍅</span> Pomodoro</a>
+        <a href="/tools/conversor-zonas-horarias.html"><span>🌐</span> Zonas horarias</a>
+        <a href="/tools/conversor-calificaciones.html"><span>🎓</span> Calificaciones</a>
+        <hr><a href="/utilidades.html"><strong>Ver todas →</strong></a>
+      </div>
+    </li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/partners_profesoria.html">Partners</a></li>
+    <li><a href="/chatbot.html">Chat IA</a></li>
+  </ul>
+  <a class="btn-nav" href="/suscripcion.html">Newsletter</a>
+  <button class="hamburger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu">
+  <a href="/index.html">Inicio</a><a href="/herramientas.html">Herramientas IA</a>
+  <div class="m-section">Utilidades</div>
+  <a href="/utilidades.html">Ver todas las utilidades</a>
+  <a href="/blog.html">Blog</a><a href="/partners_profesoria.html">Partners</a><a href="/chatbot.html">Chat IA</a>
+  <a href="/suscripcion.html" class="m-cta">Newsletter</a>
+</div>
+
+<main class="page" id="pm-main">
+
+<section class="tool-head">
+  <div class="crumb"><a href="/utilidades.html">← Volver a utilidades</a></div>
+  <span class="pill cat-estudiantes">Estudiantes</span>
+  <h1>Pomodoro de <em>estudio</em></h1>
+  <p>Estructura tu sesión: 25 minutos de foco, 5 de descanso, descanso largo cada 4. Configurable, con avisos y lista de tareas.</p>
+</section>
+
+<section class="tool-body tool-3-1">
+
+  <div class="card">
+    <div class="pm-config">
+      <div class="field">
+        <label class="label" for="pm-work">Pomodoro (min)</label>
+        <input class="input" type="number" min="1" max="120" value="25" id="pm-work">
+      </div>
+      <div class="field">
+        <label class="label" for="pm-short">Descanso corto (min)</label>
+        <input class="input" type="number" min="1" max="60" value="5" id="pm-short">
+      </div>
+      <div class="field">
+        <label class="label" for="pm-long">Descanso largo (min)</label>
+        <input class="input" type="number" min="1" max="120" value="15" id="pm-long">
+      </div>
+      <div class="field">
+        <label class="label" for="pm-every">Largo cada N</label>
+        <input class="input" type="number" min="2" max="12" value="4" id="pm-every">
+      </div>
+    </div>
+
+    <div class="pm-phase" id="pm-phase">Estudiando</div>
+    <div class="pm-cycles" id="pm-cycles">Pomodoro 1 · 0 completados</div>
+    <div class="pm-progress" id="pm-bar"><div class="b"></div></div>
+    <div class="pm-display" id="pm-disp">25:00</div>
+
+    <div class="pm-controls">
+      <button class="btn btn-primary btn-lg" id="pm-start">▶ Iniciar</button>
+      <button class="btn btn-secondary btn-lg" id="pm-pause" style="display:none">⏸ Pausar</button>
+      <button class="btn btn-ghost" id="pm-skip">⏭ Saltar fase</button>
+      <button class="btn btn-ghost" id="pm-reset">↻ Reset</button>
+      <button class="btn btn-secondary" id="pm-fs">⛶ Pantalla completa</button>
+      <button class="btn btn-ghost btn-sm" id="pm-notif">🔔 Activar notificaciones</button>
+    </div>
+  </div>
+
+  <div class="card pm-tasks">
+    <div class="label" style="margin-bottom:12px">Lista de tareas (sesión actual)</div>
+    <div class="pm-task-add">
+      <input class="input" type="text" placeholder="Nueva tarea…" id="pm-task-in">
+      <button class="btn btn-secondary btn-sm" id="pm-task-add">Añadir</button>
+    </div>
+    <div id="pm-tasks"></div>
+  </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col"><a class="footer-logo" href="/index.html">Profesor<em>IA</em></a><p class="footer-tag">Herramientas IA gratuitas para profesores y docentes hispanohablantes.</p></div>
+    <div class="footer-col"><h4>Producto</h4><a href="/herramientas.html">Herramientas IA</a><a href="/utilidades.html">Utilidades</a><a href="/chatbot.html">Chat IA</a></div>
+    <div class="footer-col"><h4>Recursos</h4><a href="/blog.html">Blog</a><a href="/suscripcion.html">Newsletter</a><a href="/partners_profesoria.html">Partners</a></div>
+    <div class="footer-col"><h4>Legal</h4><a href="/politica-cookies-iaprofesor.html">Política de cookies</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 ProfesorIA · Hecho para docentes</p></div>
+</footer>
+
+<script src="/assets/common.js" defer></script>
+<script>
+(function(){
+  var STATE_KEY = 'pm:v1';
+
+  // Audio
+  var actx = null;
+  function ctx(){ if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)(); return actx; }
+  function tone(f, d, type, when){
+    var c = ctx(); var t0 = when || c.currentTime;
+    var o = c.createOscillator(); var g = c.createGain();
+    o.type = type || 'sine'; o.frequency.value = f;
+    o.connect(g).connect(c.destination);
+    g.gain.setValueAtTime(0, t0);
+    g.gain.linearRampToValueAtTime(0.18, t0 + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.001, t0 + d);
+    o.start(t0); o.stop(t0 + d + 0.05);
+  }
+  function chime(phase){
+    var c = ctx(); var t = c.currentTime;
+    if (phase === 'work') {
+      [659.25, 880].forEach(function(f, i){ tone(f, 0.35, 'sine', t + i*0.18); });
+    } else if (phase === 'long') {
+      [523.25, 659.25, 783.99, 1046.50].forEach(function(f, i){ tone(f, 0.4, 'sine', t + i*0.16); });
+    } else { // short
+      tone(880, 0.5, 'sine', t);
+    }
+  }
+
+  // Notifications
+  var notifBtn = document.getElementById('pm-notif');
+  function maybeRequestNotif(){
+    if (!('Notification' in window)) { notifBtn.style.display = 'none'; return; }
+    if (Notification.permission === 'granted') { notifBtn.style.display = 'none'; }
+  }
+  notifBtn.addEventListener('click', function(){
+    if (!('Notification' in window)) return;
+    Notification.requestPermission().then(function(p){
+      if (p === 'granted') { notifBtn.style.display = 'none'; window.showToast && window.showToast('✓ Notificaciones activadas'); }
+    });
+  });
+  function notify(title, body){
+    if (!('Notification' in window) || Notification.permission !== 'granted') return;
+    try { new Notification(title, { body: body, silent: false }); } catch(e) {}
+  }
+
+  // Elements
+  var workIn = document.getElementById('pm-work');
+  var shortIn = document.getElementById('pm-short');
+  var longIn = document.getElementById('pm-long');
+  var everyIn = document.getElementById('pm-every');
+  var phaseEl = document.getElementById('pm-phase');
+  var cyclesEl = document.getElementById('pm-cycles');
+  var dispEl = document.getElementById('pm-disp');
+  var barEl = document.getElementById('pm-bar');
+  var btnStart = document.getElementById('pm-start');
+  var btnPause = document.getElementById('pm-pause');
+  var btnSkip = document.getElementById('pm-skip');
+  var btnReset = document.getElementById('pm-reset');
+  var btnFs = document.getElementById('pm-fs');
+
+  // State
+  var phase = 'work'; // 'work' | 'short' | 'long'
+  var totalMs = 25*60*1000;
+  var remainingMs = totalMs;
+  var endAt = 0;
+  var intId = null;
+  var completed = 0;
+
+  function durationFor(p){
+    if (p === 'work') return Math.max(1, parseInt(workIn.value, 10) || 25) * 60 * 1000;
+    if (p === 'short') return Math.max(1, parseInt(shortIn.value, 10) || 5) * 60 * 1000;
+    return Math.max(1, parseInt(longIn.value, 10) || 15) * 60 * 1000;
+  }
+
+  function fmt(ms){
+    if (ms < 0) ms = 0;
+    var s = Math.ceil(ms/1000);
+    var m = Math.floor(s/60); s = s % 60;
+    return (m<10?'0':'') + m + ':' + (s<10?'0':'') + s;
+  }
+
+  function updateView(){
+    dispEl.textContent = fmt(remainingMs);
+    var pct = totalMs > 0 ? (1 - remainingMs/totalMs) * 100 : 0;
+    barEl.querySelector('.b').style.width = pct + '%';
+    phaseEl.classList.remove('break','long');
+    barEl.classList.remove('break','long');
+    if (phase === 'short') { phaseEl.classList.add('break'); barEl.classList.add('break'); phaseEl.textContent = 'Descanso corto'; }
+    else if (phase === 'long') { phaseEl.classList.add('long'); barEl.classList.add('long'); phaseEl.textContent = 'Descanso largo'; }
+    else { phaseEl.textContent = 'Estudiando'; }
+    var nextN = (phase === 'work' ? completed + 1 : completed);
+    cyclesEl.textContent = (phase === 'work' ? 'Pomodoro ' + nextN : 'Descanso · siguiente pomodoro ' + (completed + 1)) + ' · ' + completed + ' completados';
+    document.title = fmt(remainingMs) + ' · ' + (phase === 'work' ? 'Estudiando' : 'Descanso') + ' — Pomodoro ProfesorIA';
+    save();
+  }
+
+  function startInterval(){
+    if (intId) return;
+    endAt = Date.now() + remainingMs;
+    intId = setInterval(function(){
+      remainingMs = endAt - Date.now();
+      if (remainingMs <= 0) { remainingMs = 0; updateView(); finishPhase(); return; }
+      updateView();
+    }, 200);
+  }
+  function pauseInterval(){
+    if (!intId) return;
+    clearInterval(intId); intId = null;
+    btnStart.style.display = ''; btnPause.style.display = 'none';
+    btnStart.textContent = '▶ Reanudar';
+  }
+  function start(){
+    ctx();
+    if (intId) return;
+    if (remainingMs <= 0) { totalMs = durationFor(phase); remainingMs = totalMs; }
+    btnStart.style.display = 'none'; btnPause.style.display = '';
+    startInterval();
+  }
+  function reset(){
+    pauseInterval();
+    phase = 'work';
+    completed = 0;
+    totalMs = durationFor('work');
+    remainingMs = totalMs;
+    btnStart.textContent = '▶ Iniciar';
+    updateView();
+  }
+  function finishPhase(){
+    pauseInterval();
+    if (phase === 'work') {
+      completed += 1;
+      var every = Math.max(2, parseInt(everyIn.value, 10) || 4);
+      var nextPhase = (completed % every === 0) ? 'long' : 'short';
+      chime(nextPhase);
+      notify('🍅 Pomodoro completado', nextPhase === 'long' ? 'Descanso largo. ¡Te lo has ganado!' : 'Descanso corto.');
+      phase = nextPhase;
+    } else {
+      chime('work');
+      notify('▶ De vuelta al estudio', 'Empieza un nuevo pomodoro.');
+      phase = 'work';
+    }
+    totalMs = durationFor(phase);
+    remainingMs = totalMs;
+    btnStart.textContent = '▶ Iniciar siguiente';
+    btnStart.style.display = ''; btnPause.style.display = 'none';
+    updateView();
+  }
+  function skip(){
+    finishPhase();
+  }
+
+  btnStart.addEventListener('click', start);
+  btnPause.addEventListener('click', pauseInterval);
+  btnSkip.addEventListener('click', skip);
+  btnReset.addEventListener('click', reset);
+  btnFs.addEventListener('click', function(){ window.toggleFullscreen(document.getElementById('pm-main')); });
+
+  [workIn, shortIn, longIn, everyIn].forEach(function(el){
+    el.addEventListener('change', function(){
+      if (intId) return;
+      totalMs = durationFor(phase); remainingMs = totalMs; updateView();
+    });
+  });
+
+  // Persist (sessionStorage)
+  function save(){
+    try {
+      sessionStorage.setItem(STATE_KEY, JSON.stringify({
+        phase: phase, completed: completed,
+        remainingMs: remainingMs, running: !!intId,
+        endAt: intId ? endAt : 0
+      }));
+    } catch (e) {}
+  }
+  function restore(){
+    try {
+      var s = sessionStorage.getItem(STATE_KEY); if (!s) return;
+      var d = JSON.parse(s);
+      phase = d.phase || 'work';
+      completed = d.completed || 0;
+      totalMs = durationFor(phase);
+      if (d.running && d.endAt) {
+        var rem = d.endAt - Date.now();
+        if (rem > 0) { remainingMs = rem; start(); return; }
+      }
+      remainingMs = Math.min(d.remainingMs || totalMs, totalMs);
+      updateView();
+    } catch (e) {}
+  }
+
+  // Tasks
+  var tasksEl = document.getElementById('pm-tasks');
+  var taskInput = document.getElementById('pm-task-in');
+  function addTask(text){
+    var div = document.createElement('div');
+    div.className = 'pm-task';
+    div.innerHTML =
+      '<input type="checkbox" class="pm-chk" style="appearance:auto;width:auto;height:auto;cursor:pointer">' +
+      '<span class="pm-text"></span>' +
+      '<button class="btn btn-ghost btn-sm pm-del" aria-label="Borrar">×</button>';
+    div.querySelector('.pm-text').textContent = text;
+    div.querySelector('.pm-chk').addEventListener('change', function(e){
+      div.classList.toggle('done', e.target.checked);
+    });
+    div.querySelector('.pm-del').addEventListener('click', function(){ div.remove(); });
+    tasksEl.appendChild(div);
+  }
+  document.getElementById('pm-task-add').addEventListener('click', function(){
+    var v = taskInput.value.trim(); if (!v) return;
+    addTask(v); taskInput.value = ''; taskInput.focus();
+  });
+  taskInput.addEventListener('keydown', function(e){ if (e.key === 'Enter') document.getElementById('pm-task-add').click(); });
+
+  // Init
+  totalMs = durationFor('work'); remainingMs = totalMs;
+  updateView();
+  restore();
+  maybeRequestNotif();
+})();
+</script>
+</body>
+</html>

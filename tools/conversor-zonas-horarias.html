@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conversor de zonas horarias para clases — ProfesorIA</title>
+<meta name="description" content="Hora actual en 9 ciudades hispanohablantes y modo Programar Clase con enlace a Google Calendar. Sin librerías, 100% nativo.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://iaprofesor.com/tools/conversor-zonas-horarias.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://iaprofesor.com/tools/conversor-zonas-horarias.html">
+<meta property="og:title" content="Conversor de zonas horarias — ProfesorIA">
+<meta property="og:description" content="Reloj en vivo + programar clase con Google Calendar.">
+<meta property="og:site_name" content="ProfesorIA">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+
+<link rel="stylesheet" href="/assets/theme.css">
+<link rel="stylesheet" href="/assets/base.css">
+
+<script defer data-domain="iaprofesor.com" src="https://analytics.digiprompts.io/js/script.js"></script>
+
+<style>
+.tz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 24px; }
+.tz-card { background: var(--ink2); border: 1px solid var(--wall); border-radius: var(--r12); padding: 18px; position: relative; }
+.tz-card.origin { border-color: var(--lime); background: var(--lime-bg); }
+.tz-rm { position: absolute; top: 8px; right: 8px; background: transparent; border: none; color: var(--mist3); cursor: pointer; padding: 4px 8px; font-size: 14px; border-radius: var(--r4); }
+.tz-rm:hover { color: var(--coral); background: var(--coral-bg); }
+.tz-city { font-family: var(--mono); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--mist2); margin-bottom: 4px; }
+.tz-card.origin .tz-city { color: var(--lime); }
+.tz-time { font-family: var(--mono); font-size: 32px; font-weight: 500; color: var(--mist); letter-spacing: -1px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.tz-date { font-size: 12px; color: var(--mist3); margin-top: 4px; }
+.tz-tz { font-family: var(--mono); font-size: 9px; color: var(--mist3); letter-spacing: 0.5px; margin-top: 6px; }
+
+.tz-add-row { display: flex; gap: 8px; align-items: end; flex-wrap: wrap; padding: 16px; background: var(--ink3); border: 1px dashed var(--wall2); border-radius: var(--r8); margin-bottom: 24px; }
+.tz-add-row .field { flex: 1; min-width: 180px; }
+
+.tz-schedule { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="/index.html">Profesor<em>IA</em></a>
+  <ul class="nav-links">
+    <li><a href="/index.html">Inicio</a></li>
+    <li><a href="/herramientas.html">Herramientas</a></li>
+    <li class="nav-dd">
+      <button class="nav-dd-trigger" aria-expanded="false">Utilidades <span aria-hidden="true">▾</span></button>
+      <div class="nav-dd-menu" role="menu">
+        <a href="/tools/contador-caracteres.html"><span>📝</span> Contador de caracteres</a>
+        <a href="/tools/calculadora-notas.html"><span>🧮</span> Calculadora de notas</a>
+        <a href="/tools/generador-grupos.html"><span>👥</span> Generador de grupos</a>
+        <a href="/tools/conversor-mayusculas.html"><span>🔤</span> Conversor mayúsculas</a>
+        <a href="/tools/cronometro-aula.html"><span>⏱️</span> Cronómetro de aula</a>
+        <a href="/tools/pomodoro-estudio.html"><span>🍅</span> Pomodoro</a>
+        <a href="/tools/conversor-zonas-horarias.html"><span>🌐</span> Zonas horarias</a>
+        <a href="/tools/conversor-calificaciones.html"><span>🎓</span> Calificaciones</a>
+        <hr><a href="/utilidades.html"><strong>Ver todas →</strong></a>
+      </div>
+    </li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/partners_profesoria.html">Partners</a></li>
+    <li><a href="/chatbot.html">Chat IA</a></li>
+  </ul>
+  <a class="btn-nav" href="/suscripcion.html">Newsletter</a>
+  <button class="hamburger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu">
+  <a href="/index.html">Inicio</a><a href="/herramientas.html">Herramientas IA</a>
+  <div class="m-section">Utilidades</div>
+  <a href="/utilidades.html">Ver todas las utilidades</a>
+  <a href="/blog.html">Blog</a><a href="/partners_profesoria.html">Partners</a><a href="/chatbot.html">Chat IA</a>
+  <a href="/suscripcion.html" class="m-cta">Newsletter</a>
+</div>
+
+<main class="page">
+
+<section class="tool-head">
+  <div class="crumb"><a href="/utilidades.html">← Volver a utilidades</a></div>
+  <span class="pill cat-organizacion">Organización</span>
+  <h1>Zonas horarias para <em>clases</em></h1>
+  <p>Hora actual en las principales capitales hispanohablantes y modo "Programar clase" con enlace directo a Google Calendar.</p>
+</section>
+
+<section class="tool-body" style="display:block">
+
+  <div class="card">
+    <div class="tabs" id="tz-tabs">
+      <button class="tab active" data-tab="now">Reloj en vivo</button>
+      <button class="tab" data-tab="schedule">Programar clase</button>
+    </div>
+
+    <!-- LIVE -->
+    <div id="tz-now">
+      <div class="tz-grid" id="tz-grid"></div>
+
+      <div class="tz-add-row">
+        <div class="field">
+          <label class="label" for="tz-add-sel">Añadir ciudad</label>
+          <select class="select" id="tz-add-sel"></select>
+        </div>
+        <button class="btn btn-secondary" id="tz-add-btn">+ Añadir</button>
+      </div>
+    </div>
+
+    <!-- SCHEDULE -->
+    <div id="tz-schedule" style="display:none">
+      <div class="tz-schedule">
+        <div class="field">
+          <label class="label" for="tz-date">Fecha</label>
+          <input class="input" type="date" id="tz-date">
+        </div>
+        <div class="field">
+          <label class="label" for="tz-time">Hora</label>
+          <input class="input" type="time" id="tz-time">
+        </div>
+        <div class="field">
+          <label class="label" for="tz-dur">Duración (min)</label>
+          <input class="input" type="number" min="5" max="480" value="60" id="tz-dur">
+        </div>
+        <div class="field">
+          <label class="label" for="tz-zone">Zona origen</label>
+          <select class="select" id="tz-zone"></select>
+        </div>
+        <div class="field" style="grid-column:1 / -1">
+          <label class="label" for="tz-title">Título de la clase</label>
+          <input class="input" type="text" id="tz-title" placeholder="Ej. Clase de matemáticas — 3º ESO">
+        </div>
+      </div>
+
+      <div class="tz-grid" id="tz-grid-sched" style="margin-top:8px"></div>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
+        <a class="btn btn-primary" id="tz-cal" href="#" target="_blank" rel="noopener">📅 Generar enlace Google Calendar</a>
+        <button class="btn btn-secondary" id="tz-copy">Copiar resumen</button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col"><a class="footer-logo" href="/index.html">Profesor<em>IA</em></a><p class="footer-tag">Herramientas IA gratuitas para profesores y docentes hispanohablantes.</p></div>
+    <div class="footer-col"><h4>Producto</h4><a href="/herramientas.html">Herramientas IA</a><a href="/utilidades.html">Utilidades</a><a href="/chatbot.html">Chat IA</a></div>
+    <div class="footer-col"><h4>Recursos</h4><a href="/blog.html">Blog</a><a href="/suscripcion.html">Newsletter</a><a href="/partners_profesoria.html">Partners</a></div>
+    <div class="footer-col"><h4>Legal</h4><a href="/politica-cookies-iaprofesor.html">Política de cookies</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 ProfesorIA · Hecho para docentes</p></div>
+</footer>
+
+<script src="/assets/common.js" defer></script>
+<script>
+(function(){
+  var ZONES = [
+    { id:'Europe/Madrid',         label:'Madrid' },
+    { id:'America/Mexico_City',   label:'Ciudad de México' },
+    { id:'America/Bogota',        label:'Bogotá' },
+    { id:'America/Lima',          label:'Lima' },
+    { id:'America/Guayaquil',     label:'Quito' },
+    { id:'America/Santiago',      label:'Santiago de Chile' },
+    { id:'America/Argentina/Buenos_Aires', label:'Buenos Aires' },
+    { id:'America/Caracas',       label:'Caracas' },
+    { id:'America/New_York',      label:'Miami / NYC' },
+    { id:'America/Montevideo',    label:'Montevideo' },
+    { id:'America/Asuncion',      label:'Asunción' },
+    { id:'America/La_Paz',        label:'La Paz' }
+  ];
+  function find(id){ for (var i=0;i<ZONES.length;i++) if (ZONES[i].id===id) return ZONES[i]; return null; }
+
+  /* ────── LIVE ────── */
+  var DEFAULT = ['Europe/Madrid','America/Mexico_City','America/Bogota','America/Lima','America/Santiago','America/Argentina/Buenos_Aires'];
+  var active = DEFAULT.slice();
+  var grid = document.getElementById('tz-grid');
+  var addSel = document.getElementById('tz-add-sel');
+
+  function renderGrid(){
+    grid.innerHTML = '';
+    active.forEach(function(id, idx){
+      var z = find(id); if (!z) return;
+      var card = document.createElement('div');
+      card.className = 'tz-card' + (idx === 0 ? ' origin' : '');
+      card.innerHTML =
+        (idx > 0 ? '<button class="tz-rm" data-id="'+id+'" aria-label="Quitar">×</button>' : '') +
+        '<div class="tz-city">'+z.label+'</div>' +
+        '<div class="tz-time" data-tz-time="'+id+'">--:--</div>' +
+        '<div class="tz-date" data-tz-date="'+id+'">—</div>' +
+        '<div class="tz-tz">'+id.replace(/_/g,' ')+'</div>';
+      grid.appendChild(card);
+    });
+    refreshAddSel();
+    tickClocks();
+  }
+
+  function refreshAddSel(){
+    addSel.innerHTML = '';
+    ZONES.forEach(function(z){
+      if (active.indexOf(z.id) >= 0) return;
+      var o = document.createElement('option');
+      o.value = z.id; o.textContent = z.label;
+      addSel.appendChild(o);
+    });
+  }
+
+  function tickClocks(){
+    var now = new Date();
+    active.forEach(function(id){
+      var t = new Intl.DateTimeFormat('es-ES', { hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false, timeZone:id }).format(now);
+      var d = new Intl.DateTimeFormat('es-ES', { weekday:'short', day:'2-digit', month:'short', timeZone:id }).format(now);
+      var tEl = grid.querySelector('[data-tz-time="'+id+'"]');
+      var dEl = grid.querySelector('[data-tz-date="'+id+'"]');
+      if (tEl) tEl.textContent = t;
+      if (dEl) dEl.textContent = d;
+    });
+  }
+  setInterval(tickClocks, 1000);
+
+  document.getElementById('tz-add-btn').addEventListener('click', function(){
+    var v = addSel.value; if (!v) return;
+    if (active.indexOf(v) < 0) active.push(v);
+    renderGrid();
+  });
+  grid.addEventListener('click', function(e){
+    var b = e.target.closest('.tz-rm'); if (!b) return;
+    var id = b.dataset.id;
+    active = active.filter(function(z){ return z !== id; });
+    renderGrid();
+  });
+
+  /* ────── SCHEDULE ────── */
+  var dateIn = document.getElementById('tz-date');
+  var timeIn = document.getElementById('tz-time');
+  var durIn = document.getElementById('tz-dur');
+  var zoneIn = document.getElementById('tz-zone');
+  var titleIn = document.getElementById('tz-title');
+  var schedGrid = document.getElementById('tz-grid-sched');
+  var calLink = document.getElementById('tz-cal');
+
+  ZONES.forEach(function(z){
+    var o = document.createElement('option');
+    o.value = z.id; o.textContent = z.label;
+    if (z.id === 'Europe/Madrid') o.selected = true;
+    zoneIn.appendChild(o);
+  });
+
+  // default values
+  var d0 = new Date();
+  dateIn.value = d0.getFullYear() + '-' + String(d0.getMonth()+1).padStart(2,'0') + '-' + String(d0.getDate()).padStart(2,'0');
+  timeIn.value = '17:00';
+
+  // Compute UTC date from a "wall-clock" date+time interpreted in tzId.
+  function dateInZoneToUTC(dateStr, timeStr, tzId){
+    var parts = dateStr.split('-').map(Number);
+    var t = timeStr.split(':').map(Number);
+    var y = parts[0], mo = parts[1]-1, da = parts[2], hh = t[0], mm = t[1];
+    // Try-and-correct iteration: build UTC, then read it back in tz, adjust offset.
+    var guess = Date.UTC(y, mo, da, hh, mm, 0);
+    for (var i = 0; i < 3; i++) {
+      var dt = new Date(guess);
+      var fmt = new Intl.DateTimeFormat('en-GB', { timeZone:tzId, year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', hour12:false });
+      var p = {};
+      fmt.formatToParts(dt).forEach(function(o){ p[o.type] = o.value; });
+      var asMs = Date.UTC(+p.year, +p.month-1, +p.day, +p.hour === 24 ? 0 : +p.hour, +p.minute);
+      var diff = asMs - guess;
+      if (diff === 0) break;
+      guess -= diff;
+    }
+    return new Date(guess);
+  }
+
+  function pad(n){ return n<10 ? '0'+n : ''+n; }
+  function gcalFmt(d){
+    return d.getUTCFullYear() +
+      pad(d.getUTCMonth()+1) +
+      pad(d.getUTCDate()) + 'T' +
+      pad(d.getUTCHours()) +
+      pad(d.getUTCMinutes()) +
+      pad(d.getUTCSeconds()) + 'Z';
+  }
+
+  function refreshSchedule(){
+    if (!dateIn.value || !timeIn.value || !zoneIn.value) return;
+    var origin = zoneIn.value;
+    var dur = Math.max(5, parseInt(durIn.value, 10) || 60);
+    var startUtc = dateInZoneToUTC(dateIn.value, timeIn.value, origin);
+    var endUtc = new Date(startUtc.getTime() + dur*60000);
+
+    schedGrid.innerHTML = '';
+    var list = (active.indexOf(origin) >= 0 ? active.slice() : [origin].concat(active));
+    list.forEach(function(id){
+      var z = find(id); if (!z) return;
+      var t = new Intl.DateTimeFormat('es-ES', { hour:'2-digit', minute:'2-digit', hour12:false, timeZone:id }).format(startUtc);
+      var t2 = new Intl.DateTimeFormat('es-ES', { hour:'2-digit', minute:'2-digit', hour12:false, timeZone:id }).format(endUtc);
+      var d = new Intl.DateTimeFormat('es-ES', { weekday:'short', day:'2-digit', month:'short', timeZone:id }).format(startUtc);
+      var card = document.createElement('div');
+      card.className = 'tz-card' + (id === origin ? ' origin' : '');
+      card.innerHTML =
+        '<div class="tz-city">'+z.label+'</div>' +
+        '<div class="tz-time">'+t+' → '+t2+'</div>' +
+        '<div class="tz-date">'+d+'</div>' +
+        '<div class="tz-tz">'+id.replace(/_/g,' ')+'</div>';
+      schedGrid.appendChild(card);
+    });
+
+    var title = (titleIn.value || 'Clase').trim();
+    var url = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+      '&text=' + encodeURIComponent(title) +
+      '&dates=' + gcalFmt(startUtc) + '/' + gcalFmt(endUtc) +
+      '&details=' + encodeURIComponent('Clase programada con ProfesorIA') +
+      '&ctz=' + encodeURIComponent(origin);
+    calLink.href = url;
+    calLink.dataset.url = url;
+    calLink.dataset.start = startUtc.toISOString();
+    calLink.dataset.end = endUtc.toISOString();
+  }
+  [dateIn, timeIn, durIn, zoneIn, titleIn].forEach(function(el){ el.addEventListener('input', refreshSchedule); el.addEventListener('change', refreshSchedule); });
+
+  document.getElementById('tz-copy').addEventListener('click', function(){
+    var origin = zoneIn.value;
+    var z = find(origin);
+    var dur = parseInt(durIn.value, 10) || 60;
+    var lines = [
+      'Clase: ' + (titleIn.value || 'Clase'),
+      'Origen: ' + (z ? z.label : origin) + ' · ' + dateIn.value + ' ' + timeIn.value + ' (' + dur + ' min)',
+      ''
+    ];
+    var startUtc = dateInZoneToUTC(dateIn.value, timeIn.value, origin);
+    active.forEach(function(id){
+      var zz = find(id); if (!zz) return;
+      var t = new Intl.DateTimeFormat('es-ES', { hour:'2-digit', minute:'2-digit', hour12:false, timeZone:id }).format(startUtc);
+      lines.push('• ' + zz.label + ': ' + t);
+    });
+    if (active.indexOf(origin) < 0) {
+      var t0 = new Intl.DateTimeFormat('es-ES', { hour:'2-digit', minute:'2-digit', hour12:false, timeZone:origin }).format(startUtc);
+      lines.unshift('• ' + (z ? z.label : origin) + ': ' + t0);
+    }
+    window.copyText && window.copyText(lines.join('\n'), '✓ Resumen copiado');
+  });
+
+  /* ────── Tabs ────── */
+  document.getElementById('tz-tabs').addEventListener('click', function(e){
+    var b = e.target.closest('.tab'); if (!b) return;
+    document.querySelectorAll('#tz-tabs .tab').forEach(function(x){ x.classList.remove('active'); });
+    b.classList.add('active');
+    document.getElementById('tz-now').style.display = (b.dataset.tab === 'now') ? '' : 'none';
+    document.getElementById('tz-schedule').style.display = (b.dataset.tab === 'schedule') ? '' : 'none';
+    if (b.dataset.tab === 'schedule') refreshSchedule();
+  });
+
+  renderGrid();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generador de grupos aleatorios — ProfesorIA</title>
+<meta name="description" content="Crea grupos aleatorios de alumnos en segundos. Por número de grupos o por tamaño. Excluye ausencias, modo presentación y exportar por copia.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://iaprofesor.com/tools/generador-grupos.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://iaprofesor.com/tools/generador-grupos.html">
+<meta property="og:title" content="Generador de grupos aleatorios — ProfesorIA">
+<meta property="og:description" content="Genera grupos al azar con Fisher-Yates y modo presentación.">
+<meta property="og:site_name" content="ProfesorIA">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+
+<link rel="stylesheet" href="/assets/theme.css">
+<link rel="stylesheet" href="/assets/base.css">
+
+<script defer data-domain="iaprofesor.com" src="https://analytics.digiprompts.io/js/script.js"></script>
+
+<style>
+.gg-mode { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.gg-exclude {
+  margin-top: 12px;
+  background: var(--ink3); border: 1px solid var(--wall);
+  border-radius: var(--r8); padding: 10px;
+  max-height: 180px; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.gg-exclude .checkbox-row { padding: 4px 6px; border-radius: var(--r4); }
+.gg-exclude .checkbox-row:hover { background: var(--ink2); }
+
+.gg-results { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.gg-group {
+  background: var(--ink2); border: 1px solid var(--wall);
+  border-radius: var(--r12); padding: 18px;
+  animation: fadein 0.35s ease;
+}
+.gg-group h3 {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 1px; text-transform: uppercase; color: var(--lime);
+  margin-bottom: 12px;
+}
+.gg-group ul { list-style: none; padding: 0; }
+.gg-group li {
+  padding: 8px 10px; background: var(--ink3);
+  border: 1px solid var(--wall); border-radius: var(--r8);
+  margin-bottom: 6px; font-size: 14px; color: var(--mist);
+}
+@keyframes fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* Presentation mode */
+.gg-present {
+  position: fixed; inset: 0; background: var(--ink);
+  z-index: 999; display: none;
+  flex-direction: column; align-items: center; justify-content: center;
+  padding: 48px;
+}
+.gg-present.show { display: flex; }
+.gg-present .gp-grp { font-family: var(--mono); font-size: 16px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--lime); margin-bottom: 16px; }
+.gg-present .gp-num { font-family: var(--display); font-size: clamp(48px, 12vw, 120px); font-weight: 900; color: var(--mist); line-height: 1; margin-bottom: 32px; letter-spacing: -3px; }
+.gg-present .gp-list { font-size: clamp(20px, 3vw, 32px); color: var(--mist); text-align: center; line-height: 1.7; max-width: 80vw; }
+.gg-present .gp-list span { display: block; padding: 8px 0; }
+.gg-present .gp-nav { position: fixed; bottom: 32px; display: flex; gap: 12px; }
+.gg-present .gp-close { position: fixed; top: 24px; right: 24px; }
+.gg-present .gp-progress { position: fixed; top: 32px; left: 50%; transform: translateX(-50%); font-family: var(--mono); font-size: 12px; letter-spacing: 1px; color: var(--mist3); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="/index.html">Profesor<em>IA</em></a>
+  <ul class="nav-links">
+    <li><a href="/index.html">Inicio</a></li>
+    <li><a href="/herramientas.html">Herramientas</a></li>
+    <li class="nav-dd">
+      <button class="nav-dd-trigger" aria-expanded="false">Utilidades <span aria-hidden="true">▾</span></button>
+      <div class="nav-dd-menu" role="menu">
+        <a href="/tools/contador-caracteres.html"><span>📝</span> Contador de caracteres</a>
+        <a href="/tools/calculadora-notas.html"><span>🧮</span> Calculadora de notas</a>
+        <a href="/tools/generador-grupos.html"><span>👥</span> Generador de grupos</a>
+        <a href="/tools/conversor-mayusculas.html"><span>🔤</span> Conversor mayúsculas</a>
+        <a href="/tools/cronometro-aula.html"><span>⏱️</span> Cronómetro de aula</a>
+        <a href="/tools/pomodoro-estudio.html"><span>🍅</span> Pomodoro</a>
+        <a href="/tools/conversor-zonas-horarias.html"><span>🌐</span> Zonas horarias</a>
+        <a href="/tools/conversor-calificaciones.html"><span>🎓</span> Calificaciones</a>
+        <hr><a href="/utilidades.html"><strong>Ver todas →</strong></a>
+      </div>
+    </li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/partners_profesoria.html">Partners</a></li>
+    <li><a href="/chatbot.html">Chat IA</a></li>
+  </ul>
+  <a class="btn-nav" href="/suscripcion.html">Newsletter</a>
+  <button class="hamburger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu">
+  <a href="/index.html">Inicio</a><a href="/herramientas.html">Herramientas IA</a>
+  <div class="m-section">Utilidades</div>
+  <a href="/utilidades.html">Ver todas las utilidades</a>
+  <a href="/blog.html">Blog</a><a href="/partners_profesoria.html">Partners</a><a href="/chatbot.html">Chat IA</a>
+  <a href="/suscripcion.html" class="m-cta">Newsletter</a>
+</div>
+
+<main class="page">
+
+<section class="tool-head">
+  <div class="crumb"><a href="/utilidades.html">← Volver a utilidades</a></div>
+  <span class="pill cat-estudiantes">Estudiantes</span>
+  <h1>Generador de <em>grupos</em> aleatorios</h1>
+  <p>Pega tu lista de alumnos, elige el modo y genera grupos en segundos. Modo presentación para revelarlos uno a uno.</p>
+</section>
+
+<section class="tool-body tool-3-1">
+
+  <div class="card">
+    <div class="field">
+      <label class="label" for="gg-list">Lista de alumnos (uno por línea)</label>
+      <textarea id="gg-list" class="textarea textarea-lg" placeholder="Ana&#10;Juan&#10;María&#10;Carlos&#10;…"></textarea>
+    </div>
+
+    <div class="field" style="margin-top:16px">
+      <div class="label">Excluir alumnos (ausencias)</div>
+      <div class="gg-exclude" id="gg-exclude"><div style="font-size:12px;color:var(--mist3);padding:8px">Pega la lista para poder excluir.</div></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="card">
+      <div class="label">Modo</div>
+      <div class="gg-mode">
+        <button class="pill active" data-mode="count">Por nº de grupos</button>
+        <button class="pill" data-mode="size">Por tamaño</button>
+      </div>
+      <div class="field">
+        <label class="label" for="gg-num">Cantidad</label>
+        <input type="number" min="2" max="50" value="4" class="input" id="gg-num">
+      </div>
+      <div style="display:flex;gap:8px;margin-top:18px;flex-wrap:wrap">
+        <button class="btn btn-primary btn-block" id="gg-go">Generar grupos</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tool-body" style="display:block;margin-top:0">
+  <div class="card" id="gg-out-wrap" style="display:none">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:18px">
+      <div class="label" id="gg-summary">Grupos generados</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" id="gg-again">↻ Volver a generar</button>
+        <button class="btn btn-secondary btn-sm" id="gg-copy">Copiar lista</button>
+        <button class="btn btn-secondary btn-sm" onclick="window.print()">Imprimir</button>
+        <button class="btn btn-primary btn-sm" id="gg-present-btn">▶ Modo presentación</button>
+      </div>
+    </div>
+    <div class="gg-results" id="gg-results"></div>
+  </div>
+</section>
+
+</main>
+
+<div class="gg-present" id="gp">
+  <div class="gp-progress" id="gp-progress">1 / 4</div>
+  <div class="gp-grp">Grupo</div>
+  <div class="gp-num" id="gp-num">1</div>
+  <div class="gp-list" id="gp-list"></div>
+  <div class="gp-nav">
+    <button class="btn btn-ghost" id="gp-prev">← Anterior</button>
+    <button class="btn btn-primary" id="gp-next">Siguiente →</button>
+  </div>
+  <button class="btn btn-secondary btn-sm gp-close" id="gp-close">Salir (Esc)</button>
+</div>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col"><a class="footer-logo" href="/index.html">Profesor<em>IA</em></a><p class="footer-tag">Herramientas IA gratuitas para profesores y docentes hispanohablantes.</p></div>
+    <div class="footer-col"><h4>Producto</h4><a href="/herramientas.html">Herramientas IA</a><a href="/utilidades.html">Utilidades</a><a href="/chatbot.html">Chat IA</a></div>
+    <div class="footer-col"><h4>Recursos</h4><a href="/blog.html">Blog</a><a href="/suscripcion.html">Newsletter</a><a href="/partners_profesoria.html">Partners</a></div>
+    <div class="footer-col"><h4>Legal</h4><a href="/politica-cookies-iaprofesor.html">Política de cookies</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 ProfesorIA · Hecho para docentes</p></div>
+</footer>
+
+<script src="/assets/common.js" defer></script>
+<script>
+(function(){
+  var listEl = document.getElementById('gg-list');
+  var excludeEl = document.getElementById('gg-exclude');
+  var resultsEl = document.getElementById('gg-results');
+  var outWrap = document.getElementById('gg-out-wrap');
+  var summaryEl = document.getElementById('gg-summary');
+  var modeBtns = document.querySelectorAll('.gg-mode .pill');
+  var numInput = document.getElementById('gg-num');
+  var mode = 'count';
+  var lastGroups = null;
+
+  function parseList(){
+    return listEl.value.split('\n').map(function(s){ return s.trim(); }).filter(Boolean);
+  }
+
+  function renderExclude(){
+    var names = parseList();
+    if (!names.length) {
+      excludeEl.innerHTML = '<div style="font-size:12px;color:var(--mist3);padding:8px">Pega la lista para poder excluir.</div>';
+      return;
+    }
+    var html = '';
+    names.forEach(function(n, i){
+      var safe = n.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      html += '<label class="checkbox-row"><input type="checkbox" data-name="'+safe+'"><span>'+safe+'</span></label>';
+    });
+    excludeEl.innerHTML = html;
+  }
+
+  function shuffle(arr){
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var rand = new Uint32Array(1);
+      crypto.getRandomValues(rand);
+      var j = rand[0] % (i + 1);
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+
+  function buildGroups(){
+    var all = parseList();
+    var excluded = {};
+    excludeEl.querySelectorAll('input:checked').forEach(function(c){ excluded[c.dataset.name] = 1; });
+    var pool = all.filter(function(n){ return !excluded[n]; });
+    if (pool.length < 2) {
+      window.showToast && window.showToast('Necesitas al menos 2 alumnos', { error: true });
+      return null;
+    }
+    var n = parseInt(numInput.value, 10);
+    if (isNaN(n) || n < 1) { window.showToast && window.showToast('Cantidad inválida', { error: true }); return null; }
+    var shuffled = shuffle(pool);
+    var groups = [];
+    if (mode === 'count') {
+      for (var i = 0; i < n; i++) groups.push([]);
+      shuffled.forEach(function(name, i){ groups[i % n].push(name); });
+    } else {
+      for (var i = 0; i < shuffled.length; i += n) {
+        groups.push(shuffled.slice(i, i + n));
+      }
+    }
+    return groups;
+  }
+
+  function render(groups){
+    resultsEl.innerHTML = '';
+    groups.forEach(function(g, idx){
+      var div = document.createElement('div');
+      div.className = 'gg-group';
+      var lis = g.map(function(n){
+        return '<li>'+n.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</li>';
+      }).join('');
+      div.innerHTML = '<h3>Grupo '+(idx+1)+' · '+g.length+'</h3><ul>'+lis+'</ul>';
+      resultsEl.appendChild(div);
+    });
+    summaryEl.textContent = groups.length + ' grupo(s) · ' + groups.reduce(function(a,g){return a+g.length;}, 0) + ' alumno(s)';
+    outWrap.style.display = 'block';
+  }
+
+  modeBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      modeBtns.forEach(function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      mode = b.dataset.mode;
+    });
+  });
+  listEl.addEventListener('input', renderExclude);
+  document.getElementById('gg-go').addEventListener('click', function(){
+    var g = buildGroups(); if (!g) return; lastGroups = g; render(g);
+    outWrap.scrollIntoView({ behavior:'smooth', block:'start' });
+  });
+  document.getElementById('gg-again').addEventListener('click', function(){
+    var g = buildGroups(); if (!g) return; lastGroups = g; render(g);
+  });
+  document.getElementById('gg-copy').addEventListener('click', function(){
+    if (!lastGroups) return;
+    var lines = [];
+    lastGroups.forEach(function(g, i){
+      lines.push('Grupo ' + (i+1));
+      g.forEach(function(n){ lines.push('  • ' + n); });
+      lines.push('');
+    });
+    window.copyText && window.copyText(lines.join('\n'), '✓ Lista copiada');
+  });
+
+  // Presentation mode
+  var gp = document.getElementById('gp');
+  var gpNum = document.getElementById('gp-num');
+  var gpList = document.getElementById('gp-list');
+  var gpProg = document.getElementById('gp-progress');
+  var idx = 0;
+  function showSlide(i){
+    if (!lastGroups || !lastGroups.length) return;
+    if (i < 0) i = 0;
+    if (i >= lastGroups.length) i = lastGroups.length - 1;
+    idx = i;
+    gpNum.textContent = (i+1);
+    gpList.innerHTML = lastGroups[i].map(function(n){
+      return '<span>'+n.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</span>';
+    }).join('');
+    gpProg.textContent = (i+1) + ' / ' + lastGroups.length;
+  }
+  document.getElementById('gg-present-btn').addEventListener('click', function(){
+    if (!lastGroups || !lastGroups.length) { window.showToast && window.showToast('Genera grupos primero', { error: true }); return; }
+    idx = 0; showSlide(0); gp.classList.add('show');
+  });
+  document.getElementById('gp-close').addEventListener('click', function(){ gp.classList.remove('show'); });
+  document.getElementById('gp-prev').addEventListener('click', function(){ showSlide(idx-1); });
+  document.getElementById('gp-next').addEventListener('click', function(){ showSlide(idx+1); });
+  document.addEventListener('keydown', function(e){
+    if (!gp.classList.contains('show')) return;
+    if (e.key === 'Escape') gp.classList.remove('show');
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); showSlide(idx+1); }
+    if (e.key === 'ArrowLeft') showSlide(idx-1);
+  });
+
+  // sample
+  listEl.value = 'Ana García\nJuan Martínez\nMaría López\nCarlos Ruiz\nLucía Fernández\nPablo Sánchez\nElena Torres\nDavid Moreno\nClara Romero\nDiego Álvarez\nSofía Gil\nAdrián Vega';
+  renderExclude();
+})();
+</script>
+</body>
+</html>

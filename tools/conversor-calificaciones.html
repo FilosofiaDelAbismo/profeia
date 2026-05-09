@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conversor de calificaciones internacionales — ProfesorIA</title>
+<meta name="description" content="Convierte una nota entre 9 sistemas de calificación: España, México, Argentina, Colombia, Chile, EE. UU. (GPA y A-F), UK (honors) y ECTS.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://iaprofesor.com/tools/conversor-calificaciones.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://iaprofesor.com/tools/conversor-calificaciones.html">
+<meta property="og:title" content="Conversor de calificaciones — ProfesorIA">
+<meta property="og:description" content="Equivalencias orientativas entre 9 sistemas de notas.">
+<meta property="og:site_name" content="ProfesorIA">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+
+<link rel="stylesheet" href="/assets/theme.css">
+<link rel="stylesheet" href="/assets/base.css">
+
+<script defer data-domain="iaprofesor.com" src="https://analytics.digiprompts.io/js/script.js"></script>
+
+<style>
+.cf-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: end; }
+@media (max-width: 600px) { .cf-form { grid-template-columns: 1fr; } }
+
+.cf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.cf-card { background: var(--ink2); border: 1px solid var(--wall); border-radius: var(--r12); padding: 16px; }
+.cf-card.origin { border-color: var(--violet); background: var(--violet-bg); }
+.cf-card .system { font-family: var(--mono); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--mist2); margin-bottom: 6px; }
+.cf-card.origin .system { color: var(--violet); }
+.cf-card .value { font-family: var(--display); font-size: 28px; font-weight: 700; color: var(--mist); line-height: 1; letter-spacing: -0.5px; }
+.cf-card .scale { font-family: var(--mono); font-size: 10px; color: var(--mist3); margin-top: 4px; }
+
+.cf-batch textarea { font-family: var(--mono); }
+.cf-batch table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+.cf-batch th, .cf-batch td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--wall); font-size: 13px; }
+.cf-batch th { font-family: var(--mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--mist3); font-weight: 500; }
+.cf-batch td { color: var(--mist); }
+.cf-disclaimer { font-size: 12px; color: var(--mist3); margin-top: 16px; padding: 12px; background: var(--ink3); border: 1px dashed var(--wall2); border-radius: var(--r8); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="/index.html">Profesor<em>IA</em></a>
+  <ul class="nav-links">
+    <li><a href="/index.html">Inicio</a></li>
+    <li><a href="/herramientas.html">Herramientas</a></li>
+    <li class="nav-dd">
+      <button class="nav-dd-trigger" aria-expanded="false">Utilidades <span aria-hidden="true">▾</span></button>
+      <div class="nav-dd-menu" role="menu">
+        <a href="/tools/contador-caracteres.html"><span>📝</span> Contador de caracteres</a>
+        <a href="/tools/calculadora-notas.html"><span>🧮</span> Calculadora de notas</a>
+        <a href="/tools/generador-grupos.html"><span>👥</span> Generador de grupos</a>
+        <a href="/tools/conversor-mayusculas.html"><span>🔤</span> Conversor mayúsculas</a>
+        <a href="/tools/cronometro-aula.html"><span>⏱️</span> Cronómetro de aula</a>
+        <a href="/tools/pomodoro-estudio.html"><span>🍅</span> Pomodoro</a>
+        <a href="/tools/conversor-zonas-horarias.html"><span>🌐</span> Zonas horarias</a>
+        <a href="/tools/conversor-calificaciones.html"><span>🎓</span> Calificaciones</a>
+        <hr><a href="/utilidades.html"><strong>Ver todas →</strong></a>
+      </div>
+    </li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/partners_profesoria.html">Partners</a></li>
+    <li><a href="/chatbot.html">Chat IA</a></li>
+  </ul>
+  <a class="btn-nav" href="/suscripcion.html">Newsletter</a>
+  <button class="hamburger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu">
+  <a href="/index.html">Inicio</a><a href="/herramientas.html">Herramientas IA</a>
+  <div class="m-section">Utilidades</div>
+  <a href="/utilidades.html">Ver todas las utilidades</a>
+  <a href="/blog.html">Blog</a><a href="/partners_profesoria.html">Partners</a><a href="/chatbot.html">Chat IA</a>
+  <a href="/suscripcion.html" class="m-cta">Newsletter</a>
+</div>
+
+<main class="page">
+
+<section class="tool-head">
+  <div class="crumb"><a href="/utilidades.html">← Volver a utilidades</a></div>
+  <span class="pill cat-evaluacion">Evaluación</span>
+  <h1>Conversor de <em>calificaciones</em></h1>
+  <p>Equivalencias orientativas entre 9 sistemas de calificación. Útil para alumnos internacionales y movilidad.</p>
+</section>
+
+<section class="tool-body" style="display:block">
+
+  <div class="card">
+    <div class="tabs" id="cf-tabs">
+      <button class="tab active" data-tab="single">Una nota</button>
+      <button class="tab" data-tab="batch">Lote (lista)</button>
+    </div>
+
+    <!-- SINGLE -->
+    <div id="cf-single">
+      <div class="cf-form">
+        <div class="field">
+          <label class="label" for="cf-system">Sistema de origen</label>
+          <select class="select" id="cf-system"></select>
+        </div>
+        <div class="field">
+          <label class="label" for="cf-grade">Nota</label>
+          <input class="input" type="text" id="cf-grade" placeholder="Ej. 7.5">
+        </div>
+      </div>
+      <div style="margin-top:24px" class="cf-grid" id="cf-grid"></div>
+    </div>
+
+    <!-- BATCH -->
+    <div id="cf-batch" style="display:none" class="cf-batch">
+      <div class="field">
+        <label class="label" for="cf-batch-sys">Sistema de origen</label>
+        <select class="select" id="cf-batch-sys"></select>
+      </div>
+      <div class="field" style="margin-top:12px">
+        <label class="label" for="cf-batch-list">Notas (una por línea)</label>
+        <textarea class="textarea" id="cf-batch-list" placeholder="7.5&#10;6&#10;9.2&#10;5"></textarea>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+        <button class="btn btn-primary" id="cf-batch-go">Convertir lote</button>
+        <button class="btn btn-secondary" id="cf-batch-copy">Copiar tabla</button>
+      </div>
+      <div id="cf-batch-out"></div>
+    </div>
+
+    <div class="cf-disclaimer">
+      ⚠️ <strong>Tabla orientativa.</strong> Las equivalencias oficiales pueden variar según institución, año académico y país. Consulta siempre la tabla oficial de tu organismo educativo antes de tomar decisiones académicas.
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col"><a class="footer-logo" href="/index.html">Profesor<em>IA</em></a><p class="footer-tag">Herramientas IA gratuitas para profesores y docentes hispanohablantes.</p></div>
+    <div class="footer-col"><h4>Producto</h4><a href="/herramientas.html">Herramientas IA</a><a href="/utilidades.html">Utilidades</a><a href="/chatbot.html">Chat IA</a></div>
+    <div class="footer-col"><h4>Recursos</h4><a href="/blog.html">Blog</a><a href="/suscripcion.html">Newsletter</a><a href="/partners_profesoria.html">Partners</a></div>
+    <div class="footer-col"><h4>Legal</h4><a href="/politica-cookies-iaprofesor.html">Política de cookies</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 ProfesorIA · Hecho para docentes</p></div>
+</footer>
+
+<script src="/assets/common.js" defer></script>
+<script>
+(function(){
+  // Convertimos toda nota a un porcentaje 0-100 (canónico) y luego a cada destino.
+  // Las funciones devuelven NaN si la entrada es inválida.
+
+  function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
+
+  // INPUT: cada sistema → porcentaje (0-100)
+  var FROM = {
+    es10:    function(g){ var n = parseFloat(g); if (isNaN(n)) return NaN; return clamp(n, 0, 10) * 10; },
+    mx10:    function(g){ var n = parseFloat(g); if (isNaN(n)) return NaN; return clamp(n, 0, 10) * 10; },
+    ar10:    function(g){ var n = parseFloat(g); if (isNaN(n)) return NaN; return clamp(n, 0, 10) * 10; },
+    co5:     function(g){ var n = parseFloat(g); if (isNaN(n)) return NaN; return clamp(n, 0, 5) * 20; },
+    cl7:     function(g){ var n = parseFloat(g); if (isNaN(n)) return NaN; return ((clamp(n, 1, 7) - 1) / 6) * 100; },
+    us100:   function(g){ var n = parseFloat(g); if (isNaN(n)) return NaN; return clamp(n, 0, 100); },
+    usAF: function(g){
+      var s = String(g).trim().toUpperCase();
+      var map = { 'A+':97, 'A':93, 'A-':90, 'B+':87, 'B':83, 'B-':80, 'C+':77, 'C':73, 'C-':70, 'D+':67, 'D':63, 'D-':60, 'F':50 };
+      return s in map ? map[s] : NaN;
+    },
+    gpa4: function(g){
+      var n = parseFloat(g); if (isNaN(n)) return NaN; n = clamp(n, 0, 4);
+      // Mapeo orientativo GPA → %: 4.0=95, 3.7=90, 3.3=87, 3.0=83, 2.7=80, 2.3=77, 2.0=73, 1.7=70, 1.3=67, 1.0=63, <1.0 lineal a 50
+      var pts = [[4.0,95],[3.7,90],[3.3,87],[3.0,83],[2.7,80],[2.3,77],[2.0,73],[1.7,70],[1.3,67],[1.0,63],[0,50]];
+      for (var i = 0; i < pts.length - 1; i++) {
+        var a = pts[i], b = pts[i+1];
+        if (n <= a[0] && n >= b[0]) {
+          if (a[0] === b[0]) return a[1];
+          var t = (n - b[0]) / (a[0] - b[0]);
+          return b[1] + t * (a[1] - b[1]);
+        }
+      }
+      return 50;
+    },
+    uk: function(g){
+      var s = String(g).trim().toUpperCase();
+      var map = { 'FIRST':75, '1ST':75, '2:1':65, 'UPPER 2':65, '2:2':55, 'LOWER 2':55, 'THIRD':45, '3RD':45, 'PASS':40, 'FAIL':30 };
+      return s in map ? map[s] : NaN;
+    },
+    ects: function(g){
+      var s = String(g).trim().toUpperCase();
+      var map = { 'A':92, 'B':82, 'C':72, 'D':62, 'E':52, 'F':40, 'FX':45 };
+      return s in map ? map[s] : NaN;
+    }
+  };
+
+  // OUTPUT: porcentaje → cada sistema (string mostrable + scale label)
+  function toEs10(p)  { return (p / 10).toFixed(2); }
+  function toMx10(p)  { return (p / 10).toFixed(2); }
+  function toAr10(p)  { return (p / 10).toFixed(2); }
+  function toCo5(p)   { return (p / 20).toFixed(2); }
+  function toCl7(p)   { return (1 + (p / 100) * 6).toFixed(2); }
+  function toUs100(p) { return Math.round(p).toString(); }
+  function toUsAF(p){
+    if (p >= 97) return 'A+'; if (p >= 93) return 'A'; if (p >= 90) return 'A-';
+    if (p >= 87) return 'B+'; if (p >= 83) return 'B'; if (p >= 80) return 'B-';
+    if (p >= 77) return 'C+'; if (p >= 73) return 'C'; if (p >= 70) return 'C-';
+    if (p >= 67) return 'D+'; if (p >= 63) return 'D'; if (p >= 60) return 'D-';
+    return 'F';
+  }
+  function toGpa4(p){
+    if (p >= 93) return '4.0';
+    if (p >= 90) return '3.7';
+    if (p >= 87) return '3.3';
+    if (p >= 83) return '3.0';
+    if (p >= 80) return '2.7';
+    if (p >= 77) return '2.3';
+    if (p >= 73) return '2.0';
+    if (p >= 70) return '1.7';
+    if (p >= 67) return '1.3';
+    if (p >= 63) return '1.0';
+    if (p >= 60) return '0.7';
+    return '0.0';
+  }
+  function toUk(p){
+    if (p >= 70) return 'First (1st)';
+    if (p >= 60) return 'Upper Second (2:1)';
+    if (p >= 50) return 'Lower Second (2:2)';
+    if (p >= 40) return 'Third (3rd)';
+    return 'Fail';
+  }
+  function toEcts(p){
+    if (p >= 90) return 'A';
+    if (p >= 80) return 'B';
+    if (p >= 70) return 'C';
+    if (p >= 60) return 'D';
+    if (p >= 50) return 'E';
+    return 'F';
+  }
+  function toEsCual(p){
+    if (p < 50) return 'Insuficiente';
+    if (p < 60) return 'Suficiente';
+    if (p < 70) return 'Bien';
+    if (p < 90) return 'Notable';
+    if (p < 100) return 'Sobresaliente';
+    return 'Matrícula de honor';
+  }
+
+  var SYSTEMS = [
+    { id:'es10',  label:'España',          scale:'0–10' },
+    { id:'mx10',  label:'México',          scale:'0–10' },
+    { id:'ar10',  label:'Argentina',       scale:'0–10' },
+    { id:'co5',   label:'Colombia',        scale:'0–5' },
+    { id:'cl7',   label:'Chile',           scale:'1–7' },
+    { id:'us100', label:'EE. UU. (porcentaje)', scale:'0–100' },
+    { id:'usAF',  label:'EE. UU. (A–F)',   scale:'A+ … F' },
+    { id:'gpa4',  label:'GPA EE. UU.',     scale:'0–4.0' },
+    { id:'uk',    label:'Reino Unido (honors)', scale:'1st / 2:1 / 2:2 / 3rd' },
+    { id:'ects',  label:'ECTS europeo',    scale:'A–F' },
+    { id:'esCual',label:'España (cualitativo)', scale:'IN/SU/BI/NT/SB/MH', readOnly:true }
+  ];
+  var TO_FN = {
+    es10: toEs10, mx10: toMx10, ar10: toAr10, co5: toCo5, cl7: toCl7,
+    us100: toUs100, usAF: toUsAF, gpa4: toGpa4, uk: toUk, ects: toEcts, esCual: toEsCual
+  };
+
+  // Populate selects
+  function fillSel(sel){
+    sel.innerHTML = '';
+    SYSTEMS.forEach(function(s){
+      if (s.readOnly) return;
+      var o = document.createElement('option');
+      o.value = s.id; o.textContent = s.label + ' (' + s.scale + ')';
+      sel.appendChild(o);
+    });
+  }
+  fillSel(document.getElementById('cf-system'));
+  fillSel(document.getElementById('cf-batch-sys'));
+
+  /* ────── SINGLE ────── */
+  var sysSel = document.getElementById('cf-system');
+  var grIn = document.getElementById('cf-grade');
+  var grid = document.getElementById('cf-grid');
+
+  function placeholderFor(id){
+    if (id === 'es10' || id === 'mx10' || id === 'ar10') return 'Ej. 7.5';
+    if (id === 'co5') return 'Ej. 4.0';
+    if (id === 'cl7') return 'Ej. 5.5';
+    if (id === 'us100') return 'Ej. 85';
+    if (id === 'usAF') return 'Ej. B+';
+    if (id === 'gpa4') return 'Ej. 3.5';
+    if (id === 'uk') return 'Ej. 2:1';
+    if (id === 'ects') return 'Ej. B';
+    return '';
+  }
+  sysSel.addEventListener('change', function(){
+    grIn.placeholder = placeholderFor(sysSel.value);
+    update();
+  });
+  grIn.addEventListener('input', update);
+  grIn.placeholder = placeholderFor(sysSel.value);
+
+  function update(){
+    var fromId = sysSel.value;
+    var raw = grIn.value.trim();
+    grid.innerHTML = '';
+    if (!raw) {
+      SYSTEMS.forEach(function(s){
+        grid.appendChild(card(s, '–', false));
+      });
+      return;
+    }
+    var pct = FROM[fromId] ? FROM[fromId](raw) : NaN;
+    if (isNaN(pct)) {
+      var msg = document.createElement('div');
+      msg.className = 'cf-card';
+      msg.innerHTML = '<div class="system">Error</div><div class="value" style="color:var(--coral);font-size:18px">Nota no válida</div><div class="scale">Revisa el formato esperado para ' + (SYSTEMS.find(function(s){return s.id===fromId;}) || {label:''}).label + '</div>';
+      grid.appendChild(msg);
+      return;
+    }
+    SYSTEMS.forEach(function(s){
+      var v = TO_FN[s.id] ? TO_FN[s.id](pct) : '–';
+      grid.appendChild(card(s, v, s.id === fromId));
+    });
+  }
+  function card(s, v, isOrigin){
+    var d = document.createElement('div');
+    d.className = 'cf-card' + (isOrigin ? ' origin' : '');
+    d.innerHTML = '<div class="system">' + s.label + '</div><div class="value">' + v + '</div><div class="scale">' + s.scale + '</div>';
+    return d;
+  }
+
+  // init render
+  SYSTEMS.forEach(function(s){ grid.appendChild(card(s, '–', false)); });
+
+  /* ────── BATCH ────── */
+  var batchSys = document.getElementById('cf-batch-sys');
+  var batchList = document.getElementById('cf-batch-list');
+  var batchOut = document.getElementById('cf-batch-out');
+  var lastBatch = null;
+
+  document.getElementById('cf-batch-go').addEventListener('click', function(){
+    var fromId = batchSys.value;
+    var lines = batchList.value.split('\n').map(function(s){ return s.trim(); }).filter(Boolean);
+    if (!lines.length) { window.showToast && window.showToast('Pega al menos una nota', { error: true }); return; }
+    var rows = lines.map(function(raw){
+      var pct = FROM[fromId] ? FROM[fromId](raw) : NaN;
+      var out = {};
+      SYSTEMS.forEach(function(s){ out[s.id] = isNaN(pct) ? '—' : TO_FN[s.id](pct); });
+      return { input: raw, valid: !isNaN(pct), out: out };
+    });
+    lastBatch = { fromId: fromId, rows: rows };
+
+    var headers = ['Origen'].concat(SYSTEMS.map(function(s){ return s.label; }));
+    var html = '<table><thead><tr>' + headers.map(function(h){ return '<th>'+h+'</th>'; }).join('') + '</tr></thead><tbody>';
+    rows.forEach(function(r){
+      html += '<tr><td><strong>'+r.input+'</strong></td>';
+      SYSTEMS.forEach(function(s){ html += '<td>'+r.out[s.id]+'</td>'; });
+      html += '</tr>';
+    });
+    html += '</tbody></table>';
+    batchOut.innerHTML = html;
+  });
+
+  document.getElementById('cf-batch-copy').addEventListener('click', function(){
+    if (!lastBatch) { window.showToast && window.showToast('Convierte primero', { error: true }); return; }
+    var headers = ['Origen'].concat(SYSTEMS.map(function(s){ return s.label; }));
+    var lines = [headers.join('\t')];
+    lastBatch.rows.forEach(function(r){
+      var row = [r.input].concat(SYSTEMS.map(function(s){ return String(r.out[s.id]); }));
+      lines.push(row.join('\t'));
+    });
+    window.copyText && window.copyText(lines.join('\n'), '✓ Tabla copiada');
+  });
+
+  /* ────── Tabs ────── */
+  document.getElementById('cf-tabs').addEventListener('click', function(e){
+    var b = e.target.closest('.tab'); if (!b) return;
+    document.querySelectorAll('#cf-tabs .tab').forEach(function(x){ x.classList.remove('active'); });
+    b.classList.add('active');
+    document.getElementById('cf-single').style.display = (b.dataset.tab === 'single') ? '' : 'none';
+    document.getElementById('cf-batch').style.display = (b.dataset.tab === 'batch') ? '' : 'none';
+  });
+})();
+</script>
+</body>
+</html>

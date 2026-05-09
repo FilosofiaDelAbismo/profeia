@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cronómetro y temporizador de aula — ProfesorIA</title>
+<meta name="description" content="Temporizador y cronómetro con display gigante para proyectar en clase. Alarma sonora, modo pantalla completa y vueltas. 100% en el navegador.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://iaprofesor.com/tools/cronometro-aula.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://iaprofesor.com/tools/cronometro-aula.html">
+<meta property="og:title" content="Cronómetro y temporizador de aula — ProfesorIA">
+<meta property="og:description" content="Display gigante, alarma y modo pantalla completa.">
+<meta property="og:site_name" content="ProfesorIA">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+
+<link rel="stylesheet" href="/assets/theme.css">
+<link rel="stylesheet" href="/assets/base.css">
+
+<script defer data-domain="iaprofesor.com" src="https://analytics.digiprompts.io/js/script.js"></script>
+
+<style>
+.cr-display {
+  font-family: var(--mono);
+  font-size: clamp(80px, 18vw, 220px);
+  font-weight: 500; letter-spacing: -4px;
+  color: var(--mist); line-height: 1;
+  text-align: center; padding: 24px 0;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s;
+}
+.cr-display.warn { color: var(--gold); }
+.cr-display.danger { color: var(--coral); animation: pulse-danger 0.8s ease-in-out infinite; }
+@keyframes pulse-danger {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+.cr-progress {
+  width: 100%; height: 8px;
+  background: var(--ink3);
+  border-radius: 100px; overflow: hidden;
+  margin-bottom: 24px;
+}
+.cr-progress > .b {
+  height: 100%; background: var(--lime);
+  border-radius: 100px; transition: width 1s linear, background 0.3s;
+  width: 0%;
+}
+.cr-progress.warn > .b { background: var(--gold); }
+.cr-progress.danger > .b { background: var(--coral); }
+
+.cr-quick { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin: 16px 0 24px; }
+.cr-quick .pill { font-size: 11px; padding: 6px 14px; }
+
+.cr-controls { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 24px; }
+
+.cr-config { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; max-width: 520px; margin: 0 auto 8px; }
+
+.cr-laps { margin-top: 24px; }
+.cr-laps-list {
+  display: flex; flex-direction: column; gap: 4px;
+  max-height: 240px; overflow-y: auto;
+}
+.cr-lap {
+  display: flex; justify-content: space-between;
+  padding: 8px 12px; background: var(--ink3);
+  border: 1px solid var(--wall); border-radius: var(--r8);
+  font-family: var(--mono); font-size: 13px;
+}
+.cr-lap-n { color: var(--mist3); letter-spacing: 1px; text-transform: uppercase; font-size: 10px; }
+.cr-lap-t { color: var(--lime); }
+
+/* Fullscreen */
+:fullscreen .nav, :fullscreen .footer, :fullscreen .tool-head { display: none !important; }
+:fullscreen .tool-body { margin: 0 !important; padding: 24px !important; max-width: 100% !important; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+:fullscreen .card { width: 100%; max-width: 1200px; }
+:fullscreen .cr-display { font-size: clamp(120px, 25vw, 360px); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="/index.html">Profesor<em>IA</em></a>
+  <ul class="nav-links">
+    <li><a href="/index.html">Inicio</a></li>
+    <li><a href="/herramientas.html">Herramientas</a></li>
+    <li class="nav-dd">
+      <button class="nav-dd-trigger" aria-expanded="false">Utilidades <span aria-hidden="true">▾</span></button>
+      <div class="nav-dd-menu" role="menu">
+        <a href="/tools/contador-caracteres.html"><span>📝</span> Contador de caracteres</a>
+        <a href="/tools/calculadora-notas.html"><span>🧮</span> Calculadora de notas</a>
+        <a href="/tools/generador-grupos.html"><span>👥</span> Generador de grupos</a>
+        <a href="/tools/conversor-mayusculas.html"><span>🔤</span> Conversor mayúsculas</a>
+        <a href="/tools/cronometro-aula.html"><span>⏱️</span> Cronómetro de aula</a>
+        <a href="/tools/pomodoro-estudio.html"><span>🍅</span> Pomodoro</a>
+        <a href="/tools/conversor-zonas-horarias.html"><span>🌐</span> Zonas horarias</a>
+        <a href="/tools/conversor-calificaciones.html"><span>🎓</span> Calificaciones</a>
+        <hr><a href="/utilidades.html"><strong>Ver todas →</strong></a>
+      </div>
+    </li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/partners_profesoria.html">Partners</a></li>
+    <li><a href="/chatbot.html">Chat IA</a></li>
+  </ul>
+  <a class="btn-nav" href="/suscripcion.html">Newsletter</a>
+  <button class="hamburger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu">
+  <a href="/index.html">Inicio</a><a href="/herramientas.html">Herramientas IA</a>
+  <div class="m-section">Utilidades</div>
+  <a href="/utilidades.html">Ver todas las utilidades</a>
+  <a href="/blog.html">Blog</a><a href="/partners_profesoria.html">Partners</a><a href="/chatbot.html">Chat IA</a>
+  <a href="/suscripcion.html" class="m-cta">Newsletter</a>
+</div>
+
+<main class="page" id="cr-main">
+
+<section class="tool-head">
+  <div class="crumb"><a href="/utilidades.html">← Volver a utilidades</a></div>
+  <span class="pill cat-aula">Aula</span>
+  <h1>Cronómetro y temporizador <em>de aula</em></h1>
+  <p>Display enorme para proyectar, alarma sonora y modo pantalla completa. Lo que necesitas para una clase ágil.</p>
+</section>
+
+<section class="tool-body" style="display:block">
+
+  <div class="card">
+    <div class="tabs" id="cr-tabs">
+      <button class="tab active" data-tab="timer">Temporizador</button>
+      <button class="tab" data-tab="stop">Cronómetro</button>
+    </div>
+
+    <!-- TIMER -->
+    <div id="cr-timer">
+      <div class="cr-config">
+        <div class="field">
+          <label class="label" for="cr-min">Minutos</label>
+          <input class="input input-num" type="number" min="0" max="999" value="5" id="cr-min" style="max-width:none">
+        </div>
+        <div class="field">
+          <label class="label" for="cr-sec">Segundos</label>
+          <input class="input input-num" type="number" min="0" max="59" value="0" id="cr-sec" style="max-width:none">
+        </div>
+        <div class="field">
+          <label class="label" for="cr-sound">Alarma</label>
+          <select class="select" id="cr-sound">
+            <option value="bell">Campanita</option>
+            <option value="beep">Pitido</option>
+            <option value="ascending">Subida</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="cr-quick" id="cr-quick"></div>
+
+      <div class="cr-progress" id="cr-bar"><div class="b"></div></div>
+      <div class="cr-display" id="cr-disp">05:00</div>
+
+      <div class="cr-controls">
+        <button class="btn btn-primary btn-lg" id="cr-start">▶ Iniciar</button>
+        <button class="btn btn-secondary btn-lg" id="cr-pause" style="display:none">⏸ Pausar</button>
+        <button class="btn btn-ghost" id="cr-reset">↻ Reiniciar</button>
+        <button class="btn btn-secondary" id="cr-fs">⛶ Pantalla completa</button>
+      </div>
+    </div>
+
+    <!-- STOPWATCH -->
+    <div id="cr-stop" style="display:none">
+      <div class="cr-display" id="cs-disp">00:00.00</div>
+      <div class="cr-controls">
+        <button class="btn btn-primary btn-lg" id="cs-start">▶ Iniciar</button>
+        <button class="btn btn-secondary btn-lg" id="cs-pause" style="display:none">⏸ Pausar</button>
+        <button class="btn btn-secondary" id="cs-lap" disabled>⚑ Vuelta</button>
+        <button class="btn btn-ghost" id="cs-reset">↻ Reset</button>
+      </div>
+      <div class="cr-laps" id="cs-laps-wrap" style="display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div class="label">Vueltas</div>
+          <button class="btn btn-ghost btn-sm" id="cs-copy">Copiar lista</button>
+        </div>
+        <div class="cr-laps-list" id="cs-laps"></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col"><a class="footer-logo" href="/index.html">Profesor<em>IA</em></a><p class="footer-tag">Herramientas IA gratuitas para profesores y docentes hispanohablantes.</p></div>
+    <div class="footer-col"><h4>Producto</h4><a href="/herramientas.html">Herramientas IA</a><a href="/utilidades.html">Utilidades</a><a href="/chatbot.html">Chat IA</a></div>
+    <div class="footer-col"><h4>Recursos</h4><a href="/blog.html">Blog</a><a href="/suscripcion.html">Newsletter</a><a href="/partners_profesoria.html">Partners</a></div>
+    <div class="footer-col"><h4>Legal</h4><a href="/politica-cookies-iaprofesor.html">Política de cookies</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 ProfesorIA · Hecho para docentes</p></div>
+</footer>
+
+<script src="/assets/common.js" defer></script>
+<script>
+(function(){
+  /* ────── Web Audio para alarmas ────── */
+  var audioCtx = null;
+  function getCtx(){ if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); return audioCtx; }
+  function tone(freq, dur, type, when){
+    var ctx = getCtx();
+    var t0 = (when || ctx.currentTime);
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.type = type || 'sine';
+    osc.frequency.value = freq;
+    osc.connect(gain).connect(ctx.destination);
+    gain.gain.setValueAtTime(0, t0);
+    gain.gain.linearRampToValueAtTime(0.25, t0 + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.001, t0 + dur);
+    osc.start(t0); osc.stop(t0 + dur + 0.05);
+  }
+  function playAlarm(name){
+    var ctx = getCtx();
+    var t = ctx.currentTime;
+    if (name === 'beep') {
+      [0, 0.3, 0.6].forEach(function(o){ tone(880, 0.18, 'square', t + o); });
+    } else if (name === 'ascending') {
+      [523.25, 659.25, 783.99, 1046.50].forEach(function(f, i){ tone(f, 0.2, 'sine', t + i*0.18); });
+    } else { // bell
+      [880, 1318.5, 1760].forEach(function(f, i){ tone(f, 0.6, 'sine', t + i*0.06); });
+    }
+  }
+  function tickShort(){ tone(660, 0.06, 'sine'); }
+
+  /* ────── TIMER ────── */
+  var minIn = document.getElementById('cr-min');
+  var secIn = document.getElementById('cr-sec');
+  var disp = document.getElementById('cr-disp');
+  var bar = document.getElementById('cr-bar');
+  var btnStart = document.getElementById('cr-start');
+  var btnPause = document.getElementById('cr-pause');
+  var btnReset = document.getElementById('cr-reset');
+  var btnFs = document.getElementById('cr-fs');
+  var soundSel = document.getElementById('cr-sound');
+
+  var totalMs = 0, remainingMs = 0, intervalId = null, finished = false;
+
+  function fmt(ms){
+    if (ms < 0) ms = 0;
+    var totalS = Math.ceil(ms / 1000);
+    var m = Math.floor(totalS / 60), s = totalS % 60;
+    return (m<10?'0':'') + m + ':' + (s<10?'0':'') + s;
+  }
+
+  function setRemaining(ms){
+    remainingMs = Math.max(0, ms);
+    disp.textContent = fmt(remainingMs);
+    var pct = totalMs > 0 ? (1 - remainingMs / totalMs) * 100 : 0;
+    bar.querySelector('.b').style.width = pct + '%';
+    disp.classList.remove('warn','danger');
+    bar.classList.remove('warn','danger');
+    if (remainingMs > 0 && remainingMs <= 10000) { disp.classList.add('danger'); bar.classList.add('danger'); }
+    else if (totalMs > 0 && remainingMs / totalMs < 0.25) { disp.classList.add('warn'); bar.classList.add('warn'); }
+  }
+
+  function readInputs(){
+    var m = parseInt(minIn.value, 10) || 0;
+    var s = parseInt(secIn.value, 10) || 0;
+    return Math.max(0, (m * 60 + s) * 1000);
+  }
+
+  function syncFromInputs(){
+    if (intervalId) return;
+    totalMs = readInputs();
+    setRemaining(totalMs);
+    finished = false;
+  }
+  minIn.addEventListener('input', syncFromInputs);
+  secIn.addEventListener('input', syncFromInputs);
+
+  function start(){
+    if (intervalId) return;
+    if (remainingMs <= 0 || finished) {
+      totalMs = readInputs();
+      remainingMs = totalMs;
+      finished = false;
+    }
+    if (remainingMs <= 0) { window.showToast && window.showToast('Pon un tiempo > 0', { error: true }); return; }
+    var endAt = Date.now() + remainingMs;
+    btnStart.style.display = 'none'; btnPause.style.display = '';
+    intervalId = setInterval(function(){
+      var rem = endAt - Date.now();
+      setRemaining(rem);
+      if (rem <= 10000 && rem > 0 && Math.abs(rem - Math.round(rem/1000)*1000) < 50) tickShort();
+      if (rem <= 0) {
+        clearInterval(intervalId); intervalId = null;
+        finished = true;
+        btnStart.style.display = ''; btnPause.style.display = 'none';
+        btnStart.textContent = '▶ Iniciar';
+        playAlarm(soundSel.value);
+        window.showToast && window.showToast('⏰ ¡Tiempo!');
+      }
+    }, 100);
+  }
+  function pause(){
+    if (!intervalId) return;
+    clearInterval(intervalId); intervalId = null;
+    btnStart.style.display = ''; btnPause.style.display = 'none';
+    btnStart.textContent = '▶ Reanudar';
+  }
+  function reset(){
+    if (intervalId) { clearInterval(intervalId); intervalId = null; }
+    finished = false;
+    totalMs = readInputs();
+    setRemaining(totalMs);
+    btnStart.style.display = ''; btnPause.style.display = 'none';
+    btnStart.textContent = '▶ Iniciar';
+  }
+  btnStart.addEventListener('click', start);
+  btnPause.addEventListener('click', pause);
+  btnReset.addEventListener('click', reset);
+  btnFs.addEventListener('click', function(){ window.toggleFullscreen(document.getElementById('cr-main')); });
+
+  // Quick buttons
+  var QUICKS = [1,5,10,15,20,30,45,60];
+  var quickBox = document.getElementById('cr-quick');
+  QUICKS.forEach(function(m){
+    var b = document.createElement('button');
+    b.className = 'pill';
+    b.textContent = m + "'";
+    b.addEventListener('click', function(){
+      minIn.value = m; secIn.value = 0;
+      reset();
+    });
+    quickBox.appendChild(b);
+  });
+
+  syncFromInputs();
+
+  /* ────── STOPWATCH ────── */
+  var csDisp = document.getElementById('cs-disp');
+  var csStart = document.getElementById('cs-start');
+  var csPause = document.getElementById('cs-pause');
+  var csLap = document.getElementById('cs-lap');
+  var csReset = document.getElementById('cs-reset');
+  var csCopy = document.getElementById('cs-copy');
+  var csLapsWrap = document.getElementById('cs-laps-wrap');
+  var csLapsBox = document.getElementById('cs-laps');
+  var csElapsed = 0, csStartedAt = 0, csInt = null, csLaps = [];
+
+  function csFmt(ms){
+    var m = Math.floor(ms / 60000);
+    var s = Math.floor((ms % 60000) / 1000);
+    var c = Math.floor((ms % 1000) / 10);
+    return (m<10?'0':'') + m + ':' + (s<10?'0':'') + s + '.' + (c<10?'0':'') + c;
+  }
+  function csTick(){ csDisp.textContent = csFmt(csElapsed + (Date.now() - csStartedAt)); }
+
+  csStart.addEventListener('click', function(){
+    if (csInt) return;
+    csStartedAt = Date.now();
+    csInt = setInterval(csTick, 31);
+    csStart.style.display = 'none'; csPause.style.display = '';
+    csLap.disabled = false;
+  });
+  csPause.addEventListener('click', function(){
+    if (!csInt) return;
+    csElapsed += Date.now() - csStartedAt;
+    clearInterval(csInt); csInt = null;
+    csStart.style.display = ''; csPause.style.display = 'none';
+    csStart.textContent = '▶ Reanudar';
+  });
+  csReset.addEventListener('click', function(){
+    if (csInt) { clearInterval(csInt); csInt = null; }
+    csElapsed = 0; csStartedAt = 0;
+    csDisp.textContent = '00:00.00';
+    csStart.style.display = ''; csPause.style.display = 'none';
+    csStart.textContent = '▶ Iniciar';
+    csLap.disabled = true;
+    csLaps = []; csLapsBox.innerHTML = ''; csLapsWrap.style.display = 'none';
+  });
+  csLap.addEventListener('click', function(){
+    var t = csElapsed + (csInt ? (Date.now() - csStartedAt) : 0);
+    csLaps.push(t);
+    var div = document.createElement('div');
+    div.className = 'cr-lap';
+    div.innerHTML = '<span class="cr-lap-n">Vuelta '+csLaps.length+'</span><span class="cr-lap-t">'+csFmt(t)+'</span>';
+    csLapsBox.insertBefore(div, csLapsBox.firstChild);
+    csLapsWrap.style.display = '';
+  });
+  csCopy.addEventListener('click', function(){
+    if (!csLaps.length) return;
+    var lines = csLaps.map(function(t, i){ return 'Vuelta ' + (i+1) + ': ' + csFmt(t); });
+    window.copyText && window.copyText(lines.join('\n'), '✓ Vueltas copiadas');
+  });
+
+  /* ────── Tabs ────── */
+  document.getElementById('cr-tabs').addEventListener('click', function(e){
+    var b = e.target.closest('.tab'); if (!b) return;
+    document.querySelectorAll('#cr-tabs .tab').forEach(function(x){ x.classList.remove('active'); });
+    b.classList.add('active');
+    document.getElementById('cr-timer').style.display = (b.dataset.tab === 'timer') ? '' : 'none';
+    document.getElementById('cr-stop').style.display = (b.dataset.tab === 'stop') ? '' : 'none';
+  });
+
+  /* ────── Keyboard ────── */
+  document.addEventListener('keydown', function(e){
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.code === 'Space') {
+      e.preventDefault();
+      var inTimer = document.getElementById('cr-timer').style.display !== 'none';
+      if (inTimer) { intervalId ? pause() : start(); }
+      else { csInt ? csPause.click() : csStart.click(); }
+    }
+  });
+})();
+</script>
+</body>
+</html>
